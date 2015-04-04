@@ -208,10 +208,27 @@ void MyGLWidget::draw()
 {
     quadric = gluNewQuadric();
     gluQuadricDrawStyle(quadric, GLU_FILL );
-        gluSphere( quadric , 4, 10 , 10 );
-        /*glPushMatrix();
+    int alpha =0;
+    int beta=0;
+    glPushMatrix();
+        glPushMatrix();
+            glColor3f(0.9,0.6,0.4);
+            glScalef(5,5, 0.5);
+            gluCylinder(quadric,0.5,0.5,1,20,20);
+        glPopMatrix();
+        glPushMatrix();
+            glRotatef(alpha,1,0,0);
+            glRotatef(beta, 0,1,0);
+            glPushMatrix();
+                glColor3f(1,1,1);
+                glTranslatef(0,0,1);
+                glScalef(2,2,2);
+                gluSphere(quadric,0.5,10,10);
+
+        /*gluSphere( quadric , 4, 10 , 10 );
+        glPushMatrix();
         glTranslatef(5,5,5);
         gluCylinder(quadric,2,2,4,10,10);
-        glPopMatrix();*/
-        gluDeleteQuadric(quadric);
+        glPopMatrix();
+        gluDeleteQuadric(quadric);*/
 }
