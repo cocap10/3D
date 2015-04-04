@@ -14,10 +14,12 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         window.cpp \
-    myglwidget.cpp
+    myglwidget.cpp \
+    bras.cpp
 
 HEADERS  += window.h \
-    myglwidget.h
+    myglwidget.h \
+    bras.h
 
 FORMS    += window.ui \
     window.ui
