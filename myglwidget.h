@@ -5,6 +5,7 @@
 
 #include <QGLWidget>
 #include <GL/glu.h>
+#include <bras.h>
 
 class MyGLWidget : public QGLWidget
 {
