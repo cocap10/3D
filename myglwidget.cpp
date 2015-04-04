@@ -215,6 +215,8 @@ void MyGLWidget::draw()
             glColor3f(0.9,0.6,0.4);
             glScalef(5,5, 0.5);
             gluCylinder(quadric,0.5,0.5,1,20,20);
+            glTranslatef(0,0,1);
+            gluDisk(quadric,0,0.5,20,10);
         glPopMatrix();
         glPushMatrix();
             glRotatef(alpha,1,0,0);
@@ -224,7 +226,9 @@ void MyGLWidget::draw()
                 glTranslatef(0,0,1);
                 glScalef(2,2,2);
                 gluSphere(quadric,0.5,10,10);
-
+            glPopMatrix();
+        glPopMatrix();
+    glPopMatrix();
         /*gluSphere( quadric , 4, 10 , 10 );
         glPushMatrix();
         glTranslatef(5,5,5);
