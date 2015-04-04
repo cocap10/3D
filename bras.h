@@ -9,6 +9,9 @@ public:
     Bras();
     ~Bras();
     void construir();
+    GLuint getListCylindre() const;
+    void setListCylindre(const GLuint &value);
+
 private:
     // pour utiliser gluSphere gluCylinder  et gluDisk
     GLUquadricObj *quadric;

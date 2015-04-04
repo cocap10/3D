@@ -58,6 +58,8 @@ private:
     GLuint GLtexture[1];
 
     GLUquadricObj *quadric;
+
+    Bras leBras;
 };
 GLuint loadtgadisplayCDV ( const char* filename );//textures
 #endif // MYGLWIDGET_H
