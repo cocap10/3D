@@ -17,6 +17,7 @@ private:
     GLUquadricObj *quadric;
     // pour les display lists
     GLuint listCylindre;
+    GLuint listDemiBras;
     //pour bouger le bras
     int alpha;
     int beta;

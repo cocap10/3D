@@ -206,7 +206,7 @@ void MyGLWidget::mouseMoveEvent(QMouseEvent *event)
 
 void MyGLWidget::draw()
 {
-    //leBras.construir();
+    leBras.construir();
     /*glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glCallList(leBras.getListCylindre());
     glFlush();*/
