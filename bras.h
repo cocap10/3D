@@ -12,6 +12,9 @@ public:
     GLuint getListCylindre() const;
     void setListCylindre(const GLuint &value);
 
+    GLuint getListDemiBras() const;
+    void setListDemiBras(const GLuint &value);
+
 private:
     // pour utiliser gluSphere gluCylinder  et gluDisk
     GLUquadricObj *quadric;
@@ -21,6 +24,9 @@ private:
     //pour bouger le bras
     int alpha;
     int beta;
+    int teta;
+    int pi;
+    int omega;
 };
 
 #endif // BRAS_H

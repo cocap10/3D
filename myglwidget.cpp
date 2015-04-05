@@ -154,7 +154,7 @@ void MyGLWidget::paintGL()
     glRotatef(90.0,0.0,0.0,1.0);
 
     //Realiser les transfo du monde
-    glTranslatef(-10.0, 0, 0);
+    glTranslatef(-10.0, 0, -10);
 
     glRotatef(-xRot , 0.0, 1.0, 0.0);//theta
     glRotatef(-yRot , 0.0, 0.0, 1.0);//phi
@@ -208,7 +208,7 @@ void MyGLWidget::draw()
 {
     leBras.construir();
     /*glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glCallList(leBras.getListCylindre());
+    glCallList(leBras.getListDemiBras());
     glFlush();*/
     qDebug()<<glGetError();
 }

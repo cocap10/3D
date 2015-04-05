@@ -22,8 +22,9 @@ void Bras::construir()
 
     quadric=gluNewQuadric();
     gluQuadricDrawStyle(quadric, GLU_FILL);
-    alpha=45;
-    beta=0;
+    alpha=10;
+    beta=20;
+    teta=30;
     listCylindre=glGenLists(1);
     listDemiBras=glGenLists(2);
 
@@ -37,16 +38,17 @@ void Bras::construir()
     glEndList();
 
     glNewList(listDemiBras, GL_COMPILE);
+    glPushMatrix();
         glPushMatrix();
-            glTranslatef(0,0,2);
             glScalef(2,2,2);
             gluSphere(quadric,0.5,10,10);
         glPopMatrix();
         glPushMatrix();
-            glTranslatef(0,0,3);
+            glTranslatef(0,0,1);
             glScalef(2,2,6);
             glCallList(listCylindre);
         glPopMatrix();
+    glPopMatrix();
     glEndList();
 
 
@@ -58,6 +60,7 @@ void Bras::construir()
 
 
     //socle
+    glColor3f(1,1,1);
     glPushMatrix();
         glScalef(5,5, 0.5);
         glCallList(listCylindre);
@@ -66,10 +69,16 @@ void Bras::construir()
 
     glRotatef(alpha,1,0,0);
     glRotatef(beta, 0,1,0);
-    //avant-bras
-    glCallList(listDemiBras);
-
-
+    //bras
+    glPushMatrix();
+        //debut-bras
+        glTranslatef(0,0,1.5);
+        glColor3f(1,0,0);glCallList(listDemiBras);
+        glTranslatef(0,0,8);
+        glRotatef(teta,1,0,0);
+        //avant-bras
+        glColor3f(0,1,0);glCallList(listDemiBras);
+    glPopMatrix();
 
     glFlush();
 }
@@ -82,5 +91,15 @@ void Bras::setListCylindre(const GLuint &value)
 {
     listCylindre = value;
 }
+GLuint Bras::getListDemiBras() const
+{
+    return listDemiBras;
+}
+
+void Bras::setListDemiBras(const GLuint &value)
+{
+    listDemiBras = value;
+}
+
 
 
