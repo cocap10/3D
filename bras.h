@@ -21,11 +21,13 @@ private:
     // pour les display lists
     GLuint listCylindre;
     GLuint listDemiBras;
+    GLuint listDoigt;
     //pour bouger le bras
     int alpha;
     int beta;
     int teta;
     int pi;
+    int omega;
 
 };
 

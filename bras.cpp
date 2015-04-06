@@ -1,12 +1,7 @@
 #include "bras.h"
-#include <QtGlobal>
+#include <QDebug>
 Bras::Bras()
 {
-    /*quadric=gluNewQuadric();
-    gluQuadricDrawStyle(quadric, GLU_FILL);
-    alpha=0;
-    beta=0;
-    listCylindre=glGenLists(1);*/
 
 
 
@@ -14,6 +9,7 @@ Bras::Bras()
 
 Bras::~Bras()
 {
+    qDebug()<<"Fin bras";
 
 }
 
@@ -26,7 +22,7 @@ void Bras::construir()
     beta=0;
     teta=0;
     pi=0;
-    int angleMain=50;
+    omega=80;
 
     listCylindre=glGenLists(1);
     listDemiBras=glGenLists(2);
@@ -50,6 +46,25 @@ void Bras::construir()
             glTranslatef(0,0,1);
             glScalef(2,2,6);
             glCallList(listCylindre);
+        glPopMatrix();
+    glPopMatrix();
+    glEndList();
+
+    glNewList(listDoigt, GL_COMPILE);
+    glPushMatrix();
+        glPushMatrix();
+            //phalange 1
+            glTranslatef(0,0,0.2);
+            glScalef(0.3,0.3,1.5);
+            glColor3f(1,1,0);glCallList(listCylindre);
+        glPopMatrix();
+        glTranslatef(0,0,2.2);
+        glRotatef(-90,1,0,0);
+        glPushMatrix();
+            //phalange 2
+            glTranslatef(0,0,0.4);
+            glScalef(0.3,0.3,1.5);
+            glColor3f(1,1,0);glCallList(listCylindre);
         glPopMatrix();
     glPopMatrix();
     glEndList();
@@ -90,27 +105,20 @@ void Bras::construir()
                     glScalef(2,2,2);
                     glColor3f(1,0,0);gluSphere(quadric,0.5,10,10);
                 glPopMatrix();
-                glTranslatef(0,-0.7,0.7);
-                glRotatef(angleMain,1,0,0);
                 glPushMatrix();
+                    glTranslatef(0,-0.7,0.7);
+                    glRotatef(omega,1,0,0);
                     //doigt1
-                    glPushMatrix();
-                        //phalange 1
-                        glTranslatef(0,0,0.2);
-                        glScalef(0.3,0.3,1.5);
-                        glColor3f(1,1,0);glCallList(listCylindre);
-                    glPopMatrix();
-                    glTranslatef(0,0,2.2);
-                    glRotatef(-90,1,0,0);
-                    glPushMatrix();
-                        //phalange 2
-                        glTranslatef(0,0,0.4);
-                        glScalef(0.3,0.3,1.5);
-                        glColor3f(1,1,0);glCallList(listCylindre);
-                    glPopMatrix();
-
-
+                    glCallList(listDoigt);
                 glPopMatrix();
+                glPushMatrix();
+                    glTranslatef(0,0.7,0.7);
+                    glRotated(omega,-1,0,0);
+                    //doigt2
+                    glRotatef(180,0,0,1);
+                    glCallList(listDoigt);
+                glPopMatrix();
+
             glPopMatrix();
         glPopMatrix();
     glPopMatrix();
