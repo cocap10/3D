@@ -154,7 +154,7 @@ void MyGLWidget::paintGL()
     glRotatef(90.0,0.0,0.0,1.0);
 
     //Realiser les transfo du monde
-    glTranslatef(-10.0, 0, -10);
+    glTranslatef(-10.0, 0, -13);
 
     glRotatef(-xRot , 0.0, 1.0, 0.0);//theta
     glRotatef(-yRot , 0.0, 0.0, 1.0);//phi

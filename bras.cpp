@@ -22,9 +22,10 @@ void Bras::construir()
 
     quadric=gluNewQuadric();
     gluQuadricDrawStyle(quadric, GLU_FILL);
-    alpha=10;
-    beta=20;
-    teta=30;
+    alpha=0;
+    beta=0;
+    teta=0;
+    pi=0;
     listCylindre=glGenLists(1);
     listDemiBras=glGenLists(2);
 
@@ -76,8 +77,24 @@ void Bras::construir()
         glColor3f(1,0,0);glCallList(listDemiBras);
         glTranslatef(0,0,8);
         glRotatef(teta,1,0,0);
-        //avant-bras
-        glColor3f(0,1,0);glCallList(listDemiBras);
+        glPushMatrix();
+            //avant-bras
+            glColor3f(0,1,0);glCallList(listDemiBras);
+            glTranslatef(0,0,8);
+            glRotatef(pi,0,0,1);
+            glPushMatrix();
+                //main
+                glPushMatrix();
+                    glScalef(2,2,2);
+                    glColor3f(1,0,0);gluSphere(quadric,0.5,10,10);
+                glPopMatrix();
+                glTranslatef(0,-0.7,0.7);
+                glRotatef(omega+45,1,0,0);
+                glPushMatrix();
+                    //doigt1
+                glPopMatrix();
+            glPopMatrix();
+        glPopMatrix();
     glPopMatrix();
 
     glFlush();
