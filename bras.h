@@ -26,7 +26,7 @@ private:
     int beta;
     int teta;
     int pi;
-    int omega;
+
 };
 
 #endif // BRAS_H
