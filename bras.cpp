@@ -26,7 +26,7 @@ void Bras::construir()
     beta=0;
     teta=0;
     pi=0;
-    int angleMain=45;
+    int angleMain=50;
 
     listCylindre=glGenLists(1);
     listDemiBras=glGenLists(2);
@@ -95,9 +95,21 @@ void Bras::construir()
                 glPushMatrix();
                     //doigt1
                     glPushMatrix();
+                        //phalange 1
+                        glTranslatef(0,0,0.2);
                         glScalef(0.3,0.3,1.5);
                         glColor3f(1,1,0);glCallList(listCylindre);
                     glPopMatrix();
+                    glTranslatef(0,0,2.2);
+                    glRotatef(-90,1,0,0);
+                    glPushMatrix();
+                        //phalange 2
+                        glTranslatef(0,0,0.4);
+                        glScalef(0.3,0.3,1.5);
+                        glColor3f(1,1,0);glCallList(listCylindre);
+                    glPopMatrix();
+
+
                 glPopMatrix();
             glPopMatrix();
         glPopMatrix();
