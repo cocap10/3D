@@ -30,6 +30,8 @@ void Arene::draw(float rArenne, float oTrou, float dTrou, float rTrou, int pas)
     }
     glEnd();
 
+    glBegin(GL_QUAD_STRIP);
+
 
 
 

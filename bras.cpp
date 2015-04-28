@@ -15,6 +15,7 @@ Bras::~Bras()
 
 void Bras::initList()
 {
+    GLtexture[0]= loadtgadisplayCDV("earth.tga");
     qDebug()<<"initList de Bras";
     listCylindre=glGenLists(1);
     listDemiBras=glGenLists(1);
@@ -38,8 +39,12 @@ void Bras::initList()
     glNewList(listDemiBras, GL_COMPILE);
     glPushMatrix();
         glPushMatrix();
+            glEnable(GL_TEXTURE_2D);
+            glBindTexture(GL_TEXTURE_2D, GLtexture[0]);
+            gluQuadricTexture(quadric,1);
             glScalef(2,2,2);
             gluSphere(quadric,0.5,10,10);
+            glDisable(GL_TEXTURE_2D);
         glPopMatrix();
         glPushMatrix();
             glTranslatef(0,0,1);

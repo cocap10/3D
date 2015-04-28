@@ -2,6 +2,7 @@
 #define BRAS_H
 
 #include <GL/glu.h>
+#include <loadtgadisplaycdv.h>
 
 class Bras
 {
@@ -20,6 +21,7 @@ private:
     // pour utiliser gluSphere gluCylinder  et gluDisk
     GLUquadricObj *quadric;
     // pour les display lists
+    GLuint GLtexture[0];
     GLuint listCylindre;
     GLuint listDemiBras;
     GLuint listDoigt;

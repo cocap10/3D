@@ -195,6 +195,7 @@ void MyGLWidget::keyPressEvent(QKeyEvent *event)
     updateGL();
 }
 
+
 void MyGLWidget::draw()
 {
    leBras.draw();
