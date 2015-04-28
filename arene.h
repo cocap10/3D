@@ -10,7 +10,7 @@ class Arene
 public:
     Arene();
     ~Arene();
-    void constuire(float rArenne, float oTrou, float dTrou, float rTrou=2.0, int pas=10);
+    void draw(float rArenne, float oTrou, float dTrou, float rTrou=2.0, int pas=10);
 
 
 };

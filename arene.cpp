@@ -10,7 +10,7 @@ Arene::~Arene()
     qDebug()<<"Fin arene";
 }
 
-void Arene::constuire(float rArenne, float oTrou, float dTrou, float rTrou, int pas)
+void Arene::draw(float rArenne, float oTrou, float dTrou, float rTrou, int pas)
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glColor3f(1,1,0);

@@ -13,22 +13,21 @@ Bras::~Bras()
 
 }
 
-void Bras::construire(int a, int b, int t, int p, int o)
+void Bras::initList()
 {
+    qDebug()<<"initList de Bras";
+    listCylindre=glGenLists(1);
+    listDemiBras=glGenLists(1);
+    listDoigt=glGenLists(1);
+    qDebug()<< listCylindre << "\n";
+    qDebug()<< listDemiBras << "\n";
 
     quadric=gluNewQuadric();
     gluQuadricDrawStyle(quadric, GLU_FILL);
-    alpha=a;
-    beta=b;
-    teta=t;
-    pi=p;
-    omega=o;
-
-    listCylindre=glGenLists(1);
-    listDemiBras=glGenLists(2);
 
     glNewList(listCylindre, GL_COMPILE);
     glPushMatrix();
+    glColor3f(0,1,0);
         gluDisk(quadric,0,0.5,20,10);
         gluCylinder(quadric,0.5,0.5,1,20,20);
         glTranslatef(0,0,1);
@@ -71,10 +70,18 @@ void Bras::construire(int a, int b, int t, int p, int o)
 
 
 
+}
 
+void Bras::draw(int a, int b, int t, int p, int o)
+{
 
+    //qDebug()<<"Construire Bras";
+    alpha=a;
+    beta=b;
+    teta=t;
+    pi=p;
+    omega=o;
 
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
     //socle
@@ -83,7 +90,6 @@ void Bras::construire(int a, int b, int t, int p, int o)
         glScalef(5,5, 0.5);
         glCallList(listCylindre);
     glPopMatrix();
-
 
     glRotatef(alpha,1,0,0);
     glRotatef(beta, 0,1,0);

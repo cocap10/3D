@@ -85,6 +85,12 @@ void MyGLWidget::initializeGL()
     glLineWidth ( 1.0f );
     glEnable(GL_COLOR_MATERIAL);
     GLtexture[0]= loadtgadisplayCDV( "./BDS.tga");
+    leBras.initList();
+    //try {
+
+    //} catch (...) {
+    //    qDebug()<<"Erreur dans la construction du bras robot";
+    //}
     //qDebug()<<GLtexture[0];
 
 }
@@ -98,7 +104,7 @@ void MyGLWidget::paintGL()
     glRotatef(90.0,0.0,0.0,1.0);
 
     //Realiser les transfo du monde
-    glTranslatef(-20, 0, 0);
+    glTranslatef(-25, 0, -10);
     glRotatef(-xRot , 0.0, 1.0, 0.0);//theta
     glRotatef(-yRot , 0.0, 0.0, 1.0);//phi
     glRotatef(-zRot , 1.0, 0.0, 0.0);
@@ -107,6 +113,7 @@ void MyGLWidget::paintGL()
     glRotatef(xRot / 16.0, 1.0, 0.0, 0.0);
     glRotatef(yRot / 16.0, 0.0, 1.0, 0.0);
     glRotatef(zRot / 16.0, 0.0, 0.0, 1.0);*/
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     draw();
 }
 
@@ -122,7 +129,7 @@ void MyGLWidget::resizeGL(int width, int height)//propriete camera
 #else
     glOrtho(-2, +2, -2, +2, 1.0, 15.0);
 #endif*/
-    gluPerspective(70,((float)width/(float)height),0.01,30);
+    gluPerspective(70,((float)width/(float)height),0.01,40);
     glMatrixMode(GL_MODELVIEW);
 }
 
@@ -149,17 +156,7 @@ void MyGLWidget::mouseMoveEvent(QMouseEvent *event)
 
 void MyGLWidget::draw()
 {
-    try {
-        leBras.construire();
-    } catch (...) {
-        qDebug()<<"Erreur dans la construction du bras robot";
-    }
-
-    try {
-            lArene.constuire(10.0,90.0,5.0);
-        } catch (...) {
-            qDebug()<<"Erreur dans la construction de l'arene";
-        }
+   leBras.draw();
 }
 
 
