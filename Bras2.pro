@@ -17,15 +17,15 @@ SOURCES += main.cpp\
     myglwidget.cpp \
     bras.cpp \
     arene.cpp \
-    point.cpp
+    point.cpp \
+    loadtgadisplaycdv.cpp
 
 HEADERS  += window.h \
     myglwidget.h \
     bras.h \
     arene.h \
-    point.h
+    point.h \
+    loadtgadisplaycdv.h
 
 FORMS    += window.ui \
     window.ui
-
-LIBS     += -lGLU

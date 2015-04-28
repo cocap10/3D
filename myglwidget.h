@@ -63,6 +63,6 @@ private:
     Bras leBras;
     Arene lArene;
 };
-GLuint loadtgadisplayCDV ( const char* filename );//textures
+
 #endif // MYGLWIDGET_H
 
