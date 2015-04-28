@@ -70,6 +70,106 @@ void MyGLWidget::setZRotation(int angle)
         updateGL();
     }
 }
+
+void MyGLWidget::initializeGL()
+{
+    qglClearColor(Qt::blue);//couleur de fond
+
+    glEnable(GL_DEPTH_TEST);
+    glDepthFunc(GL_LEQUAL);
+    glDisable(GL_CULL_FACE);
+    glEnable ( GL_NORMALIZE );
+    glDepthMask ( GL_TRUE );
+    glBlendFunc(GL_ONE_MINUS_SRC_ALPHA, GL_SRC_ALPHA);
+    glPointSize ( 1.0f );
+    glLineWidth ( 1.0f );
+    glEnable(GL_COLOR_MATERIAL);
+    GLtexture[0]= loadtgadisplayCDV( "./BDS.tga");
+    //qDebug()<<GLtexture[0];
+
+}
+
+void MyGLWidget::paintGL()
+{
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    glLoadIdentity();
+    //Init le system de coordonnee
+    glRotatef(90.0,1.0,0.0,0.0);
+    glRotatef(90.0,0.0,0.0,1.0);
+
+    //Realiser les transfo du monde
+    glTranslatef(-20, 0, 0);
+    glRotatef(-xRot , 0.0, 1.0, 0.0);//theta
+    glRotatef(-yRot , 0.0, 0.0, 1.0);//phi
+    glRotatef(-zRot , 1.0, 0.0, 0.0);
+
+    /*    glTranslatef(0.0, 0.0, -10.0);
+    glRotatef(xRot / 16.0, 1.0, 0.0, 0.0);
+    glRotatef(yRot / 16.0, 0.0, 1.0, 0.0);
+    glRotatef(zRot / 16.0, 0.0, 0.0, 1.0);*/
+    draw();
+}
+
+void MyGLWidget::resizeGL(int width, int height)//propriete camera
+{
+    int side = qMin(width, height);
+    glViewport((width - side) / 2, (height - side) / 2, side, side);
+
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    /*#ifdef QT_OPENGL_ES_1
+    glOrthof(-2, +2, -2, +2, 1.0, 15.0);
+#else
+    glOrtho(-2, +2, -2, +2, 1.0, 15.0);
+#endif*/
+    gluPerspective(70,((float)width/(float)height),0.01,30);
+    glMatrixMode(GL_MODELVIEW);
+}
+
+void MyGLWidget::mousePressEvent(QMouseEvent *event)
+{
+    lastPos = event->pos();
+}
+
+void MyGLWidget::mouseMoveEvent(QMouseEvent *event)
+{
+    int dx = event->x() - lastPos.x();
+    int dy = event->y() - lastPos.y();
+
+    if (event->buttons() & Qt::LeftButton) {
+        setXRotation(xRot + dy);
+        setYRotation(yRot + dx);
+    } else if (event->buttons() & Qt::RightButton) {
+        setXRotation(xRot + dy);
+        setZRotation(zRot + dx);
+    }
+
+    lastPos = event->pos();
+}
+
+void MyGLWidget::draw()
+{
+    try {
+        leBras.construire();
+    } catch (...) {
+        qDebug()<<"Erreur dans la construction du bras robot";
+    }
+
+    try {
+            lArene.constuire(10.0,90.0,5.0);
+        } catch (...) {
+            qDebug()<<"Erreur dans la construction de l'arene";
+        }
+}
+
+
+
+/**
+ * @brief loadtgadisplayCDV
+ * @param filename
+ * @return
+ * Chargement des textures
+ */
 GLuint loadtgadisplayCDV ( const char* filename )
 {
     FILE* fp;
@@ -128,94 +228,3 @@ GLuint loadtgadisplayCDV ( const char* filename )
 }
 
 
-
-void MyGLWidget::initializeGL()
-{
-    qglClearColor(Qt::blue);//couleur de fond
-
-    glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LEQUAL);
-    glDisable(GL_CULL_FACE);
-    glEnable ( GL_NORMALIZE );
-    glDepthMask ( GL_TRUE );
-    glBlendFunc(GL_ONE_MINUS_SRC_ALPHA, GL_SRC_ALPHA);
-    glPointSize ( 1.0f );
-    glLineWidth ( 1.0f );
-    glEnable(GL_COLOR_MATERIAL);
-    GLtexture[0]= loadtgadisplayCDV( "./BDS.tga");
-    //qDebug()<<GLtexture[0];
-
-}
-
-void MyGLWidget::paintGL()
-{
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glLoadIdentity();
-    //Init le system de coordonnee
-    glRotatef(90.0,1.0,0.0,0.0);
-    glRotatef(90.0,0.0,0.0,1.0);
-
-    //Realiser les transfo du monde
-    glTranslatef(-1.0, 0, -17);
-    glRotatef(-xRot , 0.0, 1.0, 0.0);//theta
-    glRotatef(-yRot , 0.0, 0.0, 1.0);//phi
-    glRotatef(-zRot , 1.0, 0.0, 0.0);
-
-    /*    glTranslatef(0.0, 0.0, -10.0);
-    glRotatef(xRot / 16.0, 1.0, 0.0, 0.0);
-    glRotatef(yRot / 16.0, 0.0, 1.0, 0.0);
-    glRotatef(zRot / 16.0, 0.0, 0.0, 1.0);*/
-    draw();
-}
-
-void MyGLWidget::resizeGL(int width, int height)//propriete camera
-{
-    int side = qMin(width, height);
-    glViewport((width - side) / 2, (height - side) / 2, side, side);
-
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    /*#ifdef QT_OPENGL_ES_1
-    glOrthof(-2, +2, -2, +2, 1.0, 15.0);
-#else
-    glOrtho(-2, +2, -2, +2, 1.0, 15.0);
-#endif*/
-    gluPerspective(70,((float)width/(float)height),0.01,30);
-    glMatrixMode(GL_MODELVIEW);
-}
-
-void MyGLWidget::mousePressEvent(QMouseEvent *event)
-{
-    lastPos = event->pos();
-}
-
-void MyGLWidget::mouseMoveEvent(QMouseEvent *event)
-{
-    int dx = event->x() - lastPos.x();
-    int dy = event->y() - lastPos.y();
-
-    if (event->buttons() & Qt::LeftButton) {
-        setXRotation(xRot + dy);
-        setYRotation(yRot + dx);
-    } else if (event->buttons() & Qt::RightButton) {
-        setXRotation(xRot + dy);
-        setZRotation(zRot + dx);
-    }
-
-    lastPos = event->pos();
-}
-
-void MyGLWidget::draw()
-{
-    /*try {
-        leBras.construire();
-    } catch (...) {
-        qDebug()<<"Erreur dans la construction du bras robot";
-    }*/
-
-    try {
-            lArene.constuire(10.0,90.0,5.0);
-        } catch (...) {
-            qDebug()<<"Erreur dans la construction de l'arene";
-        }
-}
