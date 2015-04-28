@@ -156,8 +156,7 @@ void MyGLWidget::paintGL()
     glRotatef(90.0,0.0,0.0,1.0);
 
     //Realiser les transfo du monde
-    glTranslatef(-10.0, 0, -17);
-
+    glTranslatef(-1.0, 0, -17);
     glRotatef(-xRot , 0.0, 1.0, 0.0);//theta
     glRotatef(-yRot , 0.0, 0.0, 1.0);//phi
     glRotatef(-zRot , 1.0, 0.0, 0.0);
@@ -208,9 +207,15 @@ void MyGLWidget::mouseMoveEvent(QMouseEvent *event)
 
 void MyGLWidget::draw()
 {
-    try {
+    /*try {
         leBras.construire();
     } catch (...) {
         qDebug()<<"Erreur dans la construction du bras robot";
-    }
+    }*/
+
+    try {
+            lArene.constuire(10.0,90.0,5.0);
+        } catch (...) {
+            qDebug()<<"Erreur dans la construction de l'arene";
+        }
 }

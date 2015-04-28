@@ -16,12 +16,14 @@ SOURCES += main.cpp\
         window.cpp \
     myglwidget.cpp \
     bras.cpp \
-    arene.cpp
+    arene.cpp \
+    point.cpp
 
 HEADERS  += window.h \
     myglwidget.h \
     bras.h \
-    arene.h
+    arene.h \
+    point.h
 
 FORMS    += window.ui \
     window.ui

@@ -1,8 +1,8 @@
 #ifndef ARENE_H
 #define ARENE_H
-#include <QPoint>
 #include <math.h>
 #include <vector>
+#include <point.h>
 #include <GL/glu.h>
 
 class Arene
@@ -14,5 +14,6 @@ public:
 
 
 };
-std::vector<QPoint> calculerPointsCercles(float o, float d, float r, int pas);
+
+std::vector<Point> calculerPointsCercles(float o, float d, float r, int pas);
 #endif // ARENE_H
