@@ -8,7 +8,7 @@ class Bras
 public:
     Bras();
     ~Bras();
-    void construir();
+    void construire(int a=0, int b=0,int t=0,int p=0,int o=45);
     GLuint getListCylindre() const;
     void setListCylindre(const GLuint &value);
 

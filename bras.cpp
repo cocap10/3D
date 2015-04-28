@@ -13,16 +13,16 @@ Bras::~Bras()
 
 }
 
-void Bras::construir()
+void Bras::construire(int a, int b, int t, int p, int o)
 {
 
     quadric=gluNewQuadric();
     gluQuadricDrawStyle(quadric, GLU_FILL);
-    alpha=0;
-    beta=0;
-    teta=0;
-    pi=0;
-    omega=80;
+    alpha=a;
+    beta=b;
+    teta=t;
+    pi=p;
+    omega=o;
 
     listCylindre=glGenLists(1);
     listDemiBras=glGenLists(2);

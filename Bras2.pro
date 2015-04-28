@@ -15,11 +15,13 @@ TEMPLATE = app
 SOURCES += main.cpp\
         window.cpp \
     myglwidget.cpp \
-    bras.cpp
+    bras.cpp \
+    arene.cpp
 
 HEADERS  += window.h \
     myglwidget.h \
-    bras.h
+    bras.h \
+    arene.h
 
 FORMS    += window.ui \
     window.ui

@@ -6,6 +6,7 @@
 #include "myglwidget.h"
 
 #include <GL/glu.h>
+#include <QDebug>
 
 MyGLWidget::MyGLWidget(QWidget *parent)
     : QGLWidget(QGLFormat(QGL::SampleBuffers), parent)
@@ -208,11 +209,8 @@ void MyGLWidget::mouseMoveEvent(QMouseEvent *event)
 void MyGLWidget::draw()
 {
     try {
-        leBras.construir();
+        leBras.construire();
     } catch (...) {
         qDebug()<<"Erreur dans la construction du bras robot";
     }
-
-
-    qDebug()<<glGetError();
 }

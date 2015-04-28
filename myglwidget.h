@@ -6,6 +6,7 @@
 #include <QGLWidget>
 #include <GL/glu.h>
 #include <bras.h>
+#include <arene.h>
 
 class MyGLWidget : public QGLWidget
 {
