@@ -27,6 +27,7 @@ protected:
     QSize sizeHint() const;
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
+    void keyPressEvent(QKeyEvent *event);
 
 
 public slots:
@@ -47,6 +48,10 @@ private:
     int xRot;
     int yRot;
     int zRot;
+
+    int xTrans;
+    int yTrans;
+    int zTrans;
 
     QPoint lastPos;
 
