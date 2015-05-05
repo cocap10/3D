@@ -16,6 +16,7 @@ Bras::~Bras()
 void Bras::initList()
 {
     GLtexture[0]= loadtgadisplayCDV("earth.tga");
+    GLtexture[1]= loadtgadisplayCDV("BDS.tga");
     qDebug()<<"initList de Bras";
     listCylindre=glGenLists(1);
     listDemiBras=glGenLists(1);
@@ -28,7 +29,7 @@ void Bras::initList()
 
     glNewList(listCylindre, GL_COMPILE);
     glPushMatrix();
-    glColor3f(0,1,0);
+
         gluDisk(quadric,0,0.5,20,10);
         gluCylinder(quadric,0.5,0.5,1,20,20);
         glTranslatef(0,0,1);
@@ -46,10 +47,16 @@ void Bras::initList()
             gluSphere(quadric,0.5,10,10);
             glDisable(GL_TEXTURE_2D);
         glPopMatrix();
+
         glPushMatrix();
+
+            glEnable(GL_TEXTURE_2D);
+            glBindTexture(GL_TEXTURE_2D, GLtexture[1]);
+            gluQuadricTexture(quadric,1);
             glTranslatef(0,0,1);
             glScalef(2,2,6);
             glCallList(listCylindre);
+            glDisable(GL_TEXTURE_2D);
         glPopMatrix();
     glPopMatrix();
     glEndList();
@@ -60,7 +67,7 @@ void Bras::initList()
             //phalange 1
             glTranslatef(0,0,0.2);
             glScalef(0.3,0.3,1.5);
-            glColor3f(1,1,0);glCallList(listCylindre);
+            glCallList(listCylindre);
         glPopMatrix();
         glTranslatef(0,0,2.2);
         glRotatef(-90,1,0,0);
@@ -68,7 +75,7 @@ void Bras::initList()
             //phalange 2
             glTranslatef(0,0,0.4);
             glScalef(0.3,0.3,1.5);
-            glColor3f(1,1,0);glCallList(listCylindre);
+            glCallList(listCylindre);
         glPopMatrix();
     glPopMatrix();
     glEndList();
@@ -90,7 +97,6 @@ void Bras::draw(int a, int b, int t, int p, int o)
 
 
     //socle
-    glColor3f(1,1,1);
     glPushMatrix();
         glScalef(5,5, 0.5);
         glCallList(listCylindre);
@@ -102,19 +108,24 @@ void Bras::draw(int a, int b, int t, int p, int o)
     glPushMatrix();
         //debut-bras
         glTranslatef(0,0,1.5);
-        glColor3f(1,0,0);glCallList(listDemiBras);
+        glCallList(listDemiBras);
         glTranslatef(0,0,8);
         glRotatef(teta,1,0,0);
         glPushMatrix();
             //avant-bras
-            glColor3f(0,1,0);glCallList(listDemiBras);
+            glCallList(listDemiBras);
             glTranslatef(0,0,8);
             glRotatef(pi,0,0,1);
             glPushMatrix();
                 //main
                 glPushMatrix();
+                    glEnable(GL_TEXTURE_2D);
+                    glBindTexture(GL_TEXTURE_2D, GLtexture[0]);
+                    gluQuadricTexture(quadric,1);
                     glScalef(2,2,2);
-                    glColor3f(1,0,0);gluSphere(quadric,0.5,10,10);
+                    gluSphere(quadric,0.5,10,10);
+                    glDisable(GL_TEXTURE_2D);
+
                 glPopMatrix();
                 glPushMatrix();
                     glTranslatef(0,-0.7,0.7);
