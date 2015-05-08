@@ -34,3 +34,6 @@ Makefile*
 *.qmlproject.user.*
 
 *.pro
+
+#RSRC
+*.tga

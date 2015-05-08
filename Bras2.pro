@@ -29,3 +29,5 @@ HEADERS  += window.h \
 
 FORMS    += window.ui \
     window.ui
+
+LIBS     += -lGLU
