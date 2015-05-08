@@ -10,7 +10,14 @@ class Arene
 public:
     Arene();
     ~Arene();
-    void draw(float rArenne, float oTrou, float dTrou, float rTrou=2.0, int pas=10);
+    void draw(float rA=10.0, float oT=0.0, float dT=5.0, float rT=2.0, int p=10);
+private:
+    //Propriete de l'arenne
+    float rArenne;
+    float oTrou;
+    float dTrou;
+    float rTrou;
+    int pas;
 
 
 };

@@ -10,9 +10,14 @@ Arene::~Arene()
     qDebug()<<"Fin arene";
 }
 
-void Arene::draw(float rArenne, float oTrou, float dTrou, float rTrou, int pas)
+void Arene::draw(float rA, float oT, float dT, float rT, int p)
 {
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    rArenne=rA;
+    oTrou=oT;
+    dTrou=dT;
+    rTrou=rT;
+    pas=p;
+
     glColor3f(1,1,0);
     std::vector<Point> pointsTrou = calculerPointsCercles(oTrou, dTrou, rTrou, pas);
     std::vector<Point> pointsCercle = calculerPointsCercles(0,0,rArenne,pas);
@@ -29,8 +34,6 @@ void Arene::draw(float rArenne, float oTrou, float dTrou, float rTrou, int pas)
                 <<",p2(x,y): "<<pointTrou.getX() <<" "<<pointTrou.getY();*/
     }
     glEnd();
-
-    glBegin(GL_QUAD_STRIP);
 
 
 
