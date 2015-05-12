@@ -34,6 +34,15 @@ void Arene::draw(float rA, float oT, float dT, float rT, int p)
                 <<",p2(x,y): "<<pointTrou.getX() <<" "<<pointTrou.getY();*/
     }
     glEnd();
+    glBegin(GL_QUAD_STRIP);
+    for(int i=0;  i<pointsCercle.size(); i++)
+    {
+        Point pointCercle=pointsCercle[i];
+        glVertex3f(pointCercle.getX(),pointCercle.getY(),pointCercle.getZ()+5);
+        glVertex3f(pointCercle.getX(),pointCercle.getY(),pointCercle.getZ());
+    }
+    glEnd();
+
 
 
 
