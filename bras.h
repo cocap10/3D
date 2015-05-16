@@ -19,9 +19,9 @@ public:
 
 private:
     // pour utiliser gluSphere gluCylinder  et gluDisk
-    GLUquadricObj *quadric;
+    GLUquadric *quadric;
     // pour les display lists
-    GLuint GLtexture[0];
+    GLuint GLtexture[2];
     GLuint listCylindre;
     GLuint listDemiBras;
     GLuint listDoigt;

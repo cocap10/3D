@@ -74,7 +74,7 @@ void MyGLWidget::setZRotation(int angle)
 
 void MyGLWidget::initializeGL()
 {
-    qglClearColor(Qt::blue);//couleur de fond
+    qglClearColor(Qt::gray);//couleur de fond
 
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
@@ -93,12 +93,6 @@ void MyGLWidget::initializeGL()
     glLineWidth ( 1.0f );
     glEnable(GL_COLOR_MATERIAL);
     leBras.initList();
-    //try {
-
-    //} catch (...) {
-    //    qDebug()<<"Erreur dans la construction du bras robot";
-    //}
-    //qDebug()<<GLtexture[0];
 
 }
 
@@ -199,5 +193,5 @@ void MyGLWidget::keyPressEvent(QKeyEvent *event)
 void MyGLWidget::draw()
 {
    leBras.draw();
-   lArene.draw(10,0,5);
+   //lArene.draw(10,0,5);
 }

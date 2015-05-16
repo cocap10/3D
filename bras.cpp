@@ -21,8 +21,9 @@ void Bras::initList()
     listCylindre=glGenLists(1);
     listDemiBras=glGenLists(1);
     listDoigt=glGenLists(1);
-    qDebug()<< listCylindre << "\n";
-    qDebug()<< listDemiBras << "\n";
+    qDebug()<< "listCylindre"<<listCylindre << "\n";
+    qDebug()<< "listDemiBras"<<listDemiBras << "\n";
+    qDebug()<< "listDoigt"<<listDoigt << "\n";
 
     quadric=gluNewQuadric();
     gluQuadricDrawStyle(quadric, GLU_FILL);
@@ -60,6 +61,7 @@ void Bras::initList()
         glPopMatrix();
     glPopMatrix();
     glEndList();
+    gluDeleteQuadric(quadric);
 
     glNewList(listDoigt, GL_COMPILE);
     glPushMatrix();
@@ -87,7 +89,7 @@ void Bras::initList()
 void Bras::draw(int a, int b, int t, int p, int o)
 {
 
-    //qDebug()<<"Construire Bras";
+    qDebug()<<"Construire Bras";
     alpha=a;
     beta=b;
     teta=t;
@@ -121,9 +123,12 @@ void Bras::draw(int a, int b, int t, int p, int o)
                 glPushMatrix();
                     glEnable(GL_TEXTURE_2D);
                     glBindTexture(GL_TEXTURE_2D, GLtexture[0]);
+                    quadric=gluNewQuadric();
+                    gluQuadricDrawStyle(quadric, GLU_FILL);
                     gluQuadricTexture(quadric,1);
                     glScalef(2,2,2);
                     gluSphere(quadric,0.5,10,10);
+                    gluDeleteQuadric(quadric);
                     glDisable(GL_TEXTURE_2D);
 
                 glPopMatrix();
