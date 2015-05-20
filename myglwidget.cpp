@@ -89,7 +89,7 @@ void MyGLWidget::initializeGL()
     glEnable ( GL_NORMALIZE );
     glDepthMask ( GL_TRUE );
 
-    static GLfloat lightPosition[4] = { -150, -150, -150, 5.0 };
+    static GLfloat lightPosition[4] = { 100, 0, 0, 5.0 };
     glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
 
     glBlendFunc(GL_ONE_MINUS_SRC_ALPHA, GL_SRC_ALPHA);

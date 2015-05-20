@@ -55,13 +55,6 @@ private:
 
     QPoint lastPos;
 
-    /*
-     * texture
-     */
-    GLuint loadtga ( const char* filename );
-    GLfloat GLfloatData[4];
-    GLdouble GLdoubleData[4];
-
     Bras leBras;
     Arene lArene;
 };
