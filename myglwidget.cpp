@@ -98,6 +98,7 @@ void MyGLWidget::initializeGL()
     glEnable(GL_COLOR_MATERIAL);
     leBras.init();
     lArene.init();
+    laBalle.init();
 
 }
 
@@ -198,4 +199,5 @@ void MyGLWidget::draw()
 {
    leBras.draw();
    lArene.draw(12);
+   laBalle.draw(5,5,1);
 }

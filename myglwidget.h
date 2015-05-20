@@ -7,6 +7,7 @@
 #include <GL/glu.h>
 #include <bras.h>
 #include <arene.h>
+#include <balle.h>
 
 class MyGLWidget : public QGLWidget
 {
@@ -57,6 +58,7 @@ private:
 
     Bras leBras;
     Arene lArene;
+    Balle laBalle;
 };
 
 #endif // MYGLWIDGET_H

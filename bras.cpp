@@ -17,7 +17,7 @@ void Bras::init()
 {
     GLtexture[0]= loadtgadisplayCDV("earth.tga");
     GLtexture[1]= loadtgadisplayCDV("BDS.tga");
-    qDebug()<<"texture 0"<<GLtexture[0]<<"\ntexture 1"<<GLtexture[1];
+    qDebug()<<"texture 0 : "<<GLtexture[0]<<"\ntexture 1 : "<<GLtexture[1];
     listCylindre=glGenLists(1);
     listDemiBras=glGenLists(1);
     listDoigt=glGenLists(1);
