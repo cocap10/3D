@@ -11,9 +11,13 @@
 MyGLWidget::MyGLWidget(QWidget *parent)
     : QGLWidget(QGLFormat(QGL::SampleBuffers), parent)
 {
-    xRot = 0;
-    yRot = 0;
+    xRot = -120;
+    yRot = 270;
     zRot = 0;
+
+	xTrans = 0;
+    yTrans = 0;
+    zTrans = 0;
     setFocus();
 }
 
@@ -36,9 +40,9 @@ static void qNormalizeAngle(int &angle)
 {
 
     while (angle < 0)
-        angle += 360;
+        angle += 360 * 1;
     while (angle > 360)
-        angle -= 360;
+        angle -= 360 * 1;
     //qDebug()<<angle;
 }
 
@@ -74,25 +78,29 @@ void MyGLWidget::setZRotation(int angle)
 
 void MyGLWidget::initializeGL()
 {
-    qglClearColor(Qt::gray);//couleur de fond
+    qglClearColor(Qt::black);//couleur de fond
 
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
     glDisable(GL_CULL_FACE);
-    /*glShadeModel(GL_SMOOTH);
+    glShadeModel(GL_SMOOTH);
     glEnable(GL_LIGHTING);
-    glEnable(GL_LIGHT0);*/
+    glEnable(GL_LIGHT0);
     glEnable ( GL_NORMALIZE );
     glDepthMask ( GL_TRUE );
-/*
-    static GLfloat lightPosition[4] = { -50, -50, -50, 5.0 };
+
+    static GLfloat lightPosition[4] = { -150, -150, -150, 5.0 };
     glLightfv(GL_LIGHT0, GL_POSITION, lightPosition);
-*/
+
     glBlendFunc(GL_ONE_MINUS_SRC_ALPHA, GL_SRC_ALPHA);
     glPointSize ( 1.0f );
     glLineWidth ( 1.0f );
     glEnable(GL_COLOR_MATERIAL);
     leBras.initList();
+	/*GLtexture[0] = loadtgadisplayCDV("tex_bois.tga");
+    GLtexture[1] = loadtgadisplayCDV("terre.tga");
+    GLtexture[2] = loadtgadisplayCDV("crosshair.tga");
+    displayList();*/
 
 }
 
@@ -105,7 +113,7 @@ void MyGLWidget::paintGL()
     glRotatef(90.0,0.0,0.0,1.0);
 
     //Realiser les transfo du monde
-    glTranslatef(-25, 0, -10);
+    glTranslatef(-15, 0, 0);
     glRotatef(-xRot , 0.0, 1.0, 0.0);//theta
     glRotatef(-yRot , 0.0, 0.0, 1.0);//phi
     glRotatef(-zRot , 1.0, 0.0, 0.0);
@@ -114,7 +122,6 @@ void MyGLWidget::paintGL()
     glRotatef(xRot / 16.0, 1.0, 0.0, 0.0);
     glRotatef(yRot / 16.0, 0.0, 1.0, 0.0);
     glRotatef(zRot / 16.0, 0.0, 0.0, 1.0);*/
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     glTranslatef(xTrans, yTrans, zTrans);
 
@@ -133,7 +140,7 @@ void MyGLWidget::resizeGL(int width, int height)//propriete camera
 #else
     glOrtho(-2, +2, -2, +2, 1.0, 15.0);
 #endif*/
-    gluPerspective(70,((float)width/(float)height),0.01,40);
+    gluPerspective(70,((float)width/(float)height),0.01,30);
     glMatrixMode(GL_MODELVIEW);
 }
 
@@ -193,5 +200,5 @@ void MyGLWidget::keyPressEvent(QKeyEvent *event)
 void MyGLWidget::draw()
 {
    leBras.draw();
-   //lArene.draw(10,0,5);
+   lArene.draw(10,0,5);
 }

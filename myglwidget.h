@@ -61,9 +61,6 @@ private:
     GLuint loadtga ( const char* filename );
     GLfloat GLfloatData[4];
     GLdouble GLdoubleData[4];
-    GLuint GLtexture[1];
-
-    GLUquadricObj *quadric;
 
     Bras leBras;
     Arene lArene;
