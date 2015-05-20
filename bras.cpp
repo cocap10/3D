@@ -13,7 +13,7 @@ Bras::~Bras()
 
 }
 
-void Bras::initList()
+void Bras::init()
 {
     GLtexture[0]= loadtgadisplayCDV("earth.tga");
     GLtexture[1]= loadtgadisplayCDV("BDS.tga");

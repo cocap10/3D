@@ -4,6 +4,7 @@
 #include <vector>
 #include <point.h>
 #include <GL/glu.h>
+#include <loadtgadisplaycdv.h>
 
 class Arene
 {
@@ -11,6 +12,7 @@ public:
     Arene();
     ~Arene();
     void draw(float rA=10.0, float oT=0.0, float dT=5.0, float rT=2.0, int p=10);
+    void init();
 private:
     //Propriete de l'arenne
     float rArenne;
@@ -18,6 +20,7 @@ private:
     float dTrou;
     float rTrou;
     int pas;
+    GLuint GLtexture;
 
 
 };

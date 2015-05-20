@@ -96,11 +96,8 @@ void MyGLWidget::initializeGL()
     glPointSize ( 1.0f );
     glLineWidth ( 1.0f );
     glEnable(GL_COLOR_MATERIAL);
-    leBras.initList();
-	/*GLtexture[0] = loadtgadisplayCDV("tex_bois.tga");
-    GLtexture[1] = loadtgadisplayCDV("terre.tga");
-    GLtexture[2] = loadtgadisplayCDV("crosshair.tga");
-    displayList();*/
+    leBras.init();
+    lArene.init();
 
 }
 

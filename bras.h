@@ -9,7 +9,7 @@ class Bras
 public:
     Bras();
     ~Bras();
-    void initList();
+    void init();
     void draw(int a=0, int b=0,int t=0,int p=0,int o=45);
     GLuint getListCylindre() const;
     void setListCylindre(const GLuint &value);
