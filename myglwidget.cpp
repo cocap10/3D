@@ -197,7 +197,7 @@ void MyGLWidget::keyPressEvent(QKeyEvent *event)
 
 void MyGLWidget::draw()
 {
-   leBras.draw();
+   leBras.draw(0,30,30,30);
    lArene.draw(12);
    laBalle.draw(5,5,1);
 }

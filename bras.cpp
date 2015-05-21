@@ -104,48 +104,50 @@ void Bras::draw(int a, int b, int t, int p, int o)
         glCallList(listCylindre);
     glPopMatrix();
 
-    glRotatef(alpha,1,0,0);
-    glRotatef(beta, 0,1,0);
-    //bras
     glPushMatrix();
-        //debut-bras
-        glTranslatef(0,0,1.5);
-        glCallList(listDemiBras);
-        glTranslatef(0,0,8);
-        glRotatef(teta,1,0,0);
+        glRotatef(alpha,1,0,0);
+        glRotatef(beta, 0,1,0);
+        //bras
         glPushMatrix();
-            //avant-bras
+            //debut-bras
+            glTranslatef(0,0,1.5);
             glCallList(listDemiBras);
             glTranslatef(0,0,8);
-            glRotatef(pi,0,0,1);
+            glRotatef(teta,1,0,0);
             glPushMatrix();
-                //main
+                //avant-bras
+                glCallList(listDemiBras);
+                glTranslatef(0,0,8);
+                glRotatef(pi,0,0,1);
                 glPushMatrix();
-                    glEnable(GL_TEXTURE_2D);
-                    glBindTexture(GL_TEXTURE_2D, GLtexture[0]);
-                    quadric=gluNewQuadric();
-                    gluQuadricDrawStyle(quadric, GLU_FILL);
-                    gluQuadricTexture(quadric,1);
-                    glScalef(2,2,2);
-                    gluSphere(quadric,0.5,10,10);
-                    gluDeleteQuadric(quadric);
-                    glDisable(GL_TEXTURE_2D);
+                    //main
+                    glPushMatrix();
+                        glEnable(GL_TEXTURE_2D);
+                        glBindTexture(GL_TEXTURE_2D, GLtexture[0]);
+                        quadric=gluNewQuadric();
+                        gluQuadricDrawStyle(quadric, GLU_FILL);
+                        gluQuadricTexture(quadric,1);
+                        glScalef(2,2,2);
+                        gluSphere(quadric,0.5,10,10);
+                        gluDeleteQuadric(quadric);
+                        glDisable(GL_TEXTURE_2D);
+
+                    glPopMatrix();
+                    glPushMatrix();
+                        glTranslatef(0,-0.7,0.7);
+                        glRotatef(omega,1,0,0);
+                        //doigt1
+                        glCallList(listDoigt);
+                    glPopMatrix();
+                    glPushMatrix();
+                        glTranslatef(0,0.7,0.7);
+                        glRotated(omega,-1,0,0);
+                        //doigt2
+                        glRotatef(180,0,0,1);
+                        glCallList(listDoigt);
+                    glPopMatrix();
 
                 glPopMatrix();
-                glPushMatrix();
-                    glTranslatef(0,-0.7,0.7);
-                    glRotatef(omega,1,0,0);
-                    //doigt1
-                    glCallList(listDoigt);
-                glPopMatrix();
-                glPushMatrix();
-                    glTranslatef(0,0.7,0.7);
-                    glRotated(omega,-1,0,0);
-                    //doigt2
-                    glRotatef(180,0,0,1);
-                    glCallList(listDoigt);
-                glPopMatrix();
-
             glPopMatrix();
         glPopMatrix();
     glPopMatrix();
