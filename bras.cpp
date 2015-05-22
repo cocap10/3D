@@ -2,6 +2,11 @@
 #include <QDebug>
 Bras::Bras()
 {
+    alpha=0;
+    beta=0;
+    teta=0;
+    pi=0;
+    omega=0;
 
 
 
@@ -86,19 +91,11 @@ void Bras::init()
 
 }
 
-void Bras::draw(int a, int b, int t, int p, int o)
+void Bras::draw()
 {
 
-    qDebug()<<"Construire Bras";
-    alpha=a;
-    beta=b;
-    teta=t;
-    pi=p;
-    omega=o;
-
-
-
-    //socle
+    qDebug()<<"Draw Bras";
+       //socle
     glPushMatrix();
         glScalef(5,5, 0.5);
         glCallList(listCylindre);
@@ -172,6 +169,56 @@ void Bras::setListDemiBras(const GLuint &value)
 {
     listDemiBras = value;
 }
+int Bras::getAlpha() const
+{
+    return alpha;
+}
+
+void Bras::setAlpha(int value)
+{
+    alpha = value;
+}
+int Bras::getBeta() const
+{
+    return beta;
+}
+
+void Bras::setBeta(int value)
+{
+    beta = value;
+}
+int Bras::getTeta() const
+{
+    return teta;
+}
+
+void Bras::setTeta(int value)
+{
+    teta = value;
+}
+int Bras::getPi() const
+{
+    return pi;
+}
+
+void Bras::setPi(int value)
+{
+    pi = value;
+}
+int Bras::getOmega() const
+{
+    return omega;
+}
+
+void Bras::setOmega(int value)
+{
+    omega = value;
+}
+
+
+
+
+
 
 
 

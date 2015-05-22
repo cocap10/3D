@@ -10,12 +10,27 @@ public:
     Bras();
     ~Bras();
     void init();
-    void draw(int a=0, int b=0,int t=0,int p=0,int o=45);
+    void draw();
     GLuint getListCylindre() const;
     void setListCylindre(const GLuint &value);
 
     GLuint getListDemiBras() const;
     void setListDemiBras(const GLuint &value);
+
+    int getAlpha() const;
+    void setAlpha(int value);
+
+    int getBeta() const;
+    void setBeta(int value);
+
+    int getTeta() const;
+    void setTeta(int value);
+
+    int getPi() const;
+    void setPi(int value);
+
+    int getOmega() const;
+    void setOmega(int value);
 
 private:
     // pour utiliser gluSphere gluCylinder  et gluDisk

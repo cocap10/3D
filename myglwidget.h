@@ -5,6 +5,7 @@
 
 #include <QGLWidget>
 #include <GL/glu.h>
+#include <QThread>
 #include <bras.h>
 #include <arene.h>
 #include <balle.h>
@@ -15,6 +16,8 @@ class MyGLWidget : public QGLWidget
 public:
     explicit MyGLWidget(QWidget *parent = 0);
     ~MyGLWidget();
+    void deplacerBras(int a=0, int b=0,int t=0,int p=0,int o=45, int nbPas=50);
+    void deplacerBalle(int posX=5, int posY=5, int posZ=1, int nbPas=200);
 signals:
 
 public slots:

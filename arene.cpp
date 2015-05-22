@@ -2,6 +2,11 @@
 #include <QDebug>
 Arene::Arene()
 {
+    rArenne=10.0;
+    oTrou=0.0;
+    dTrou=5.0;
+    rTrou=1.5;
+    pas=10;
     qDebug()<<"Debut arene";
 }
 
@@ -16,13 +21,9 @@ void Arene::init()
     GLtexture= loadtgadisplayCDV("BDS.tga");
 }
 
-void Arene::draw(float rA, float oT, float dT, float rT, int p)
+void Arene::draw()
 {
-    rArenne=rA;
-    oTrou=oT;
-    dTrou=dT;
-    rTrou=rT;
-    pas=p;
+
 
     glColor3f(1,1,0);
     std::vector<Point> pointsTrou = calculerPointsCercles(oTrou, dTrou, rTrou, pas);

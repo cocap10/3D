@@ -9,7 +9,7 @@ public:
     Balle();
     ~Balle();
     void init();
-    void draw(float posX=5.0, float posY=5.0, float posZ=1.0);
+    void draw();
 
     int getX() const;
     void setX(int value);

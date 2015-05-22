@@ -2,6 +2,9 @@
 
 Balle::Balle()
 {
+    x=5.0;
+    y=5.0;
+    z=1.0;
 
 
 }
@@ -40,11 +43,8 @@ void Balle::setZ(int value)
 
 
 
-void Balle::draw(float posX,float posY, float posZ)
+void Balle::draw()
 {
-    x=posX;
-    y=posY;
-    z=posZ;
     glPushMatrix();
         glTranslatef(x,y,z);
         glEnable(GL_TEXTURE_2D);

@@ -26,6 +26,60 @@ MyGLWidget::~MyGLWidget()
     qDebug()<<"Fin myglwidget";
 }
 
+void MyGLWidget::deplacerBras(int a, int b, int t, int p, int o, int nbPas)
+{
+    int initA=leBras.getAlpha();
+    int initB=leBras.getBeta();
+    int initT=leBras.getTeta();
+    int initP=leBras.getPi();
+    int initO=leBras.getOmega();
+    int tmpA;
+    int tmpB;
+    int tmpT;
+    int tmpP;
+    int tmpO;
+    for (int i=0; i<nbPas+1; i++)
+    {
+        tmpA=(initA*(nbPas-i)+(a*i))/nbPas;
+        tmpB=(initB*(nbPas-i)+(b*i))/nbPas;
+        tmpT=(initT*(nbPas-i)+(t*i))/nbPas;
+        tmpP=(initP*(nbPas-i)+(p*i))/nbPas;
+        tmpO=(initO*(nbPas-i)+(o*i))/nbPas;
+        leBras.setAlpha(tmpA);
+        leBras.setBeta(tmpB);
+        leBras.setTeta(tmpT);
+        leBras.setPi(tmpP);
+        leBras.setOmega(tmpO);
+        leBras.draw();
+        qDebug()<<i <<"   a: "<<tmpA<<" b: "<<tmpB<<" t: "<<tmpT<<" p: "<<tmpP<<" o: "<<tmpO;
+        updateGL();
+        QThread::usleep(100);
+    }
+}
+
+void MyGLWidget::deplacerBalle(int posX, int posY, int posZ, int nbPas)
+{
+    int initX=laBalle.getX();
+    int initY=laBalle.getY();
+    int initZ=laBalle.getZ();
+    int tmpX;
+    int tmpY;
+    int tmpZ;
+    for (int i=0; i<nbPas+1; i++)
+    {
+        tmpX=(initX*(nbPas-i)+(posX*i))/nbPas;
+        tmpY=(initY*(nbPas-i)+(posY*i))/nbPas;
+        tmpZ=(initZ*(nbPas-i)+(posZ*i))/nbPas;
+        laBalle.setX(tmpX);
+        laBalle.setY(tmpY);
+        laBalle.setZ(tmpZ);
+        laBalle.draw();
+        qDebug()<<i <<"   x: "<<tmpX<<" y: "<<tmpY;
+        updateGL();
+        QThread::usleep(100);
+    }
+}
+
 QSize MyGLWidget::minimumSizeHint() const
 {
     return QSize(50, 50);
@@ -190,6 +244,17 @@ void MyGLWidget::keyPressEvent(QKeyEvent *event)
     {
         zTrans -= 2;
     }
+    if (event->key() == Qt::Key_D)
+    {
+        this->deplacerBras(20,45,45);
+        this->deplacerBalle(-5,8);
+    }
+    if (event->key() == Qt::Key_I)
+    {
+        this->deplacerBras();
+        this->deplacerBalle();
+    }
+
 
     updateGL();
 }
@@ -197,7 +262,7 @@ void MyGLWidget::keyPressEvent(QKeyEvent *event)
 
 void MyGLWidget::draw()
 {
-   leBras.draw(0,30,30,30);
-   lArene.draw(12);
-   laBalle.draw(5,5,1);
+   lArene.draw();
+   leBras.draw();
+   laBalle.draw();
 }
