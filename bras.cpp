@@ -19,6 +19,7 @@ void Bras::init()
     GLtexture[1]= loadtgadisplayCDV("BDS.tga");
     qDebug()<<"texture 0 : "<<GLtexture[0]<<"\ntexture 1 : "<<GLtexture[1];
     listCylindre=glGenLists(1);
+    listCylindre2=glGenLists(1);
     listDemiBras=glGenLists(1);
     listDoigt=glGenLists(1);
     qDebug()<< "listCylindre"<<listCylindre << "\n";
@@ -30,11 +31,23 @@ void Bras::init()
 
     glNewList(listCylindre, GL_COMPILE);
     glPushMatrix();
-
         gluDisk(quadric,0,0.5,20,10);
         gluCylinder(quadric,0.5,0.5,1,20,20);
         glTranslatef(0,0,1);
         gluDisk(quadric,0,0.5,20,10);
+    glPopMatrix();
+    glEndList();
+
+    glNewList(listCylindre2, GL_COMPILE);
+    glPushMatrix();
+    glEnable(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, GLtexture[1]);
+    gluQuadricTexture(quadric,1);
+        gluDisk(quadric,0,0.5,20,10);
+        gluCylinder(quadric,0.5,0.5,1,20,20);
+        glTranslatef(0,0,1);
+        gluDisk(quadric,0,0.5,20,10);
+    glDisable(GL_TEXTURE_2D);
     glPopMatrix();
     glEndList();
 
@@ -56,7 +69,7 @@ void Bras::init()
             gluQuadricTexture(quadric,1);
             glTranslatef(0,0,1);
             glScalef(2,2,6);
-            glCallList(listCylindre);
+            glCallList(listCylindre2);
             glDisable(GL_TEXTURE_2D);
         glPopMatrix();
     glPopMatrix();
