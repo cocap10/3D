@@ -18,7 +18,7 @@ Arene::~Arene()
 void Arene::init()
 {
     //Texture du sol
-    GLtexture= loadtgadisplayCDV("BDS.tga");
+    GLtexture= loadtgadisplayCDV("sable.tga");
 }
 
 void Arene::draw()
@@ -63,6 +63,9 @@ void Arene::draw()
 
 
     glDisable( GL_CULL_FACE );
+    glEnable(GL_COLOR_MATERIAL);
+    glColor4f(0,0,1,0.7);
+    glEnable(GL_BLEND);
     glBegin(GL_QUAD_STRIP);
     for(int i=0;  i<pointsCercle.size(); i++)
     {
@@ -71,6 +74,10 @@ void Arene::draw()
         glVertex3f(pointCercle.getX(),pointCercle.getY(),pointCercle.getZ());
     }
     glEnd();
+    glColor3f(1,1,1);
+    glDisable(GL_COLOR_MATERIAL);
+    glDisable(GL_BLEND);
+
     glEnable( GL_CULL_FACE );
 
 

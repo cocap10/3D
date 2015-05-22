@@ -38,6 +38,7 @@ private:
     // pour les display lists
     GLuint GLtexture[2];
     GLuint listCylindre;
+    GLuint listCylindre2;
     GLuint listDemiBras;
     GLuint listDoigt;
     //pour bouger le bras
