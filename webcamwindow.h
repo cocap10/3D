@@ -18,6 +18,14 @@ public:
     void detectHand();
     void trackHand();
 
+    int x() const;
+    void setX(int x);
+
+    int y() const;
+    void setY(int y);
+signals:
+    void posUpdated();
+
 private slots:
     void aquire();
     void startWebCam();
@@ -40,6 +48,8 @@ private:
     cv::VideoCapture *webcam_;
     QCursor *cur;
     QScreen *screen;
+    int x_;
+    int y_;
     };
 
 #endif // WEBCAMWINDOW_H

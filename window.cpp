@@ -12,6 +12,8 @@ Window::Window(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    //connect(ui->widget, SIGNAL(posUpdated()),ui->widget, SLOT(setPos())
+
     /*connect(ui->myGLWidget, SIGNAL(xRotationChanged(int)), ui->rotXSlider, SLOT(setValue(int)));
     connect(ui->myGLWidget, SIGNAL(yRotationChanged(int)), ui->rotYSlider, SLOT(setValue(int)));
     connect(ui->myGLWidget, SIGNAL(zRotationChanged(int)), ui->rotZSlider, SLOT(setValue(int)));*/
