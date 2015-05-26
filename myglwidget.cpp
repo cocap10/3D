@@ -51,20 +51,20 @@ void MyGLWidget::deplacerBras(int a, int b, int t, int p, int o, int nbPas)
         leBras.setPi(tmpP);
         leBras.setOmega(tmpO);
         leBras.draw();
-        qDebug()<<i <<"   a: "<<tmpA<<" b: "<<tmpB<<" t: "<<tmpT<<" p: "<<tmpP<<" o: "<<tmpO;
+        //qDebug()<<i <<"   a: "<<tmpA<<" b: "<<tmpB<<" t: "<<tmpT<<" p: "<<tmpP<<" o: "<<tmpO;
         updateGL();
         QThread::usleep(100);
     }
 }
 
-void MyGLWidget::deplacerBalle(int posX, int posY, int posZ, int nbPas)
+void MyGLWidget::deplacerBalle(double posX, double posY, double posZ, int nbPas)
 {
-    int initX=laBalle.getX();
-    int initY=laBalle.getY();
-    int initZ=laBalle.getZ();
-    int tmpX;
-    int tmpY;
-    int tmpZ;
+    double initX=laBalle.getX();
+    double initY=laBalle.getY();
+    double initZ=laBalle.getZ();
+    double tmpX;
+    double tmpY;
+    double tmpZ;
     for (int i=0; i<nbPas+1; i++)
     {
         tmpX=(initX*(nbPas-i)+(posX*i))/nbPas;
@@ -74,7 +74,7 @@ void MyGLWidget::deplacerBalle(int posX, int posY, int posZ, int nbPas)
         laBalle.setY(tmpY);
         laBalle.setZ(tmpZ);
         laBalle.draw();
-        qDebug()<<i <<"   x: "<<tmpX<<" y: "<<tmpY;
+        //qDebug()<<i <<"   x: "<<tmpX<<" y: "<<tmpY;
         updateGL();
         QThread::usleep(100);
     }

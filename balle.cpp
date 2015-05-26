@@ -13,30 +13,30 @@ void Balle::init()
     //Texture de la balle
     GLtexture= loadtgadisplayCDV("earth.tga");
 }
-int Balle::getX() const
+double Balle::getX() const
 {
     return x;
 }
 
-void Balle::setX(int value)
+void Balle::setX(double value)
 {
     x = value;
 }
-int Balle::getY() const
+double Balle::getY() const
 {
     return y;
 }
 
-void Balle::setY(int value)
+void Balle::setY(double value)
 {
     y = value;
 }
-int Balle::getZ() const
+double Balle::getZ() const
 {
     return z;
 }
 
-void Balle::setZ(int value)
+void Balle::setZ(double value)
 {
     z = value;
 }

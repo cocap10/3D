@@ -104,6 +104,26 @@ void WebCamWindow::startWebCam()
         webCamButton_->setText(tr("Demarrer jeu"));
     }
 }
+double WebCamWindow::y() const
+{
+    return y_;
+}
+
+void WebCamWindow::setY(double y)
+{
+    y_ = y;
+}
+
+double WebCamWindow::x() const
+{
+    return x_;
+}
+
+void WebCamWindow::setX(double x)
+{
+    x_ = x;
+}
+
 int WebCamWindow::frameHeight() const
 {
     return frameHeight_;
@@ -122,26 +142,6 @@ int WebCamWindow::frameWidth() const
 void WebCamWindow::setFrameWidth(int frameWidth)
 {
     frameWidth_ = frameWidth;
-}
-
-int WebCamWindow::y() const
-{
-    return y_;
-}
-
-void WebCamWindow::setY(int y)
-{
-    y_ = y;
-}
-
-int WebCamWindow::x() const
-{
-    return x_;
-}
-
-void WebCamWindow::setX(int x)
-{
-    x_ = x;
 }
 
 
@@ -200,13 +200,14 @@ void WebCamWindow::trackHand()
     
 
     waitKey(10);
-    x_ = matchLoc.x;
-    y_ = matchLoc.y;
+    //normalisation
+    x_ = matchLoc.x/(double)result_cols;
+    y_ = matchLoc.y/(double)result_rows;
 
     emit posUpdated();
 
     //affichage
-    qDebug() << "Position tracker :"<< matchLoc.x << ", " << matchLoc.y;
+    //qDebug() << "Position tracker :"<< matchLoc.x << ", " << matchLoc.y;
     
 
 

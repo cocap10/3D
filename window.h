@@ -5,6 +5,8 @@
 
 #include <QWidget>
 #include <QSlider>
+#include <math.h>
+#include <algorithm>
 
 namespace Ui {
 class Window;

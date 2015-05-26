@@ -17,16 +17,17 @@ public:
     void detectHand();
     void trackHand();
 
-    int x() const;
-    void setX(int x);
-
-    int y() const;
-    void setY(int y);
     int frameWidth() const;
     void setFrameWidth(int frameWidth);
 
     int frameHeight() const;
     void setFrameHeight(int frameHeight);
+
+    double x() const;
+    void setX(double x);
+
+    double y() const;
+    void setY(double y);
 
 signals:
     void posUpdated();
@@ -51,8 +52,8 @@ private:
     cv::Mat imgRoi_;
     cv::Mat imgResult_;
     cv::VideoCapture *webcam_;
-    int x_;
-    int y_;
+    double x_;
+    double y_;
     };
 
 #endif // WEBCAMWINDOW_H

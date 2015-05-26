@@ -11,19 +11,19 @@ public:
     void init();
     void draw();
 
-    int getX() const;
-    void setX(int value);
+    double getX() const;
+    void setX(double value);
 
-    int getY() const;
-    void setY(int value);
+    double getY() const;
+    void setY(double value);
 
-    int getZ() const;
-    void setZ(int value);
+    double getZ() const;
+    void setZ(double value);
 
 private:
-    int x;
-    int y;
-    int z;
+    double x;
+    double y;
+    double z;
     GLUquadric *quadric;
     GLuint GLtexture;
 };
