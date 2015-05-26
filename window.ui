@@ -24,12 +24,9 @@
      </property>
     </widget>
    </item>
-<<<<<<< HEAD
-=======
    <item>
     <widget class="WebCamWindow" name="widget" native="true"/>
    </item>
->>>>>>> origin/master
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
