@@ -266,3 +266,8 @@ void MyGLWidget::draw()
    leBras.draw();
    laBalle.draw();
 }
+
+int MyGLWidget::calculerAngle(int a, int b, int c)
+{
+    //return acos (param) * 180.0 / PI;
+}

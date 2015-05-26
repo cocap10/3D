@@ -107,7 +107,7 @@ void Bras::init()
 void Bras::draw()
 {
 
-    qDebug()<<"Draw Bras";
+    //qDebug()<<"Draw Bras";
        //socle
     glPushMatrix();
         glScalef(5,5, 0.5);

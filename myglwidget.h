@@ -9,6 +9,7 @@
 #include <bras.h>
 #include <arene.h>
 #include <balle.h>
+#include <math.h>
 
 class MyGLWidget : public QGLWidget
 {
@@ -48,6 +49,7 @@ signals:
 
 private:
     void draw();
+    int calculerAngle(int a, int b , int c);
 
     int xRot;
     int yRot;

@@ -24,6 +24,12 @@
      </property>
     </widget>
    </item>
+<<<<<<< HEAD
+=======
+   <item>
+    <widget class="WebCamWindow" name="widget" native="true"/>
+   </item>
+>>>>>>> origin/master
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
@@ -38,6 +44,12 @@
     <slot>setZRotation(int)</slot>
     <slot>setYRotation(int)</slot>
    </slots>
+  </customwidget>
+  <customwidget>
+   <class>WebCamWindow</class>
+   <extends>QWidget</extends>
+   <header>webcamwindow.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>
