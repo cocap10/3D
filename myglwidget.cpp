@@ -262,9 +262,10 @@ void MyGLWidget::keyPressEvent(QKeyEvent *event)
 
 void MyGLWidget::draw()
 {
-   lArene.draw();
+
    leBras.draw();
    laBalle.draw();
+   lArene.draw();
 }
 
 int MyGLWidget::calculerAngle(int a, int b, int c)

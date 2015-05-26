@@ -15,7 +15,7 @@ public:
     void init();
     void cible(int cotes, double rayon, GLint texture, double gamma);
     void positionnerCible();
-    double calcul_alpha(double x, double y);
+    double calcul_angle(double x, double y);
 
 private:
     //Propriete de l'arenne
@@ -29,7 +29,7 @@ private:
     double xCible;
     double yCible;
 
-    double angleTrou;
+    double angleT;
 
 
 };

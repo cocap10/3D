@@ -12,7 +12,7 @@ Arene::Arene()
     xCible = -2;
     yCible = -4;
 
-    angleTrou = calcul_alpha(rTrou, rTrou);
+    angleT = calcul_angle(rTrou, rTrou);
 }
 
 Arene::~Arene()
@@ -65,10 +65,16 @@ void Arene::draw()
     }
     glEnd();
     glDisable( GL_TEXTURE_2D );
+    glDisable( GL_CULL_FACE );
+
     glEnable( GL_CULL_FACE );
 
+    glPushMatrix();
+        glTranslatef(xCible, yCible, 0.6);
+        cible(100,1,GLtexture[2],0.2);
+    glPopMatrix();
 
-    glDisable( GL_CULL_FACE );
+
     glEnable(GL_COLOR_MATERIAL);
     glColor4f(0,0,1,0.7);
     glEnable(GL_BLEND);
@@ -80,21 +86,9 @@ void Arene::draw()
         glVertex3f(pointCercle.getX(),pointCercle.getY(),pointCercle.getZ());
     }
     glEnd();
-
-    glColor4f(1,1,1,0.5);
-    glPushMatrix();
-        glTranslatef(xCible, yCible, 0.6);
-        cible(100,1,GLtexture[2],0.2);
-    glPopMatrix();
     glColor3f(1,1,1);
     glDisable(GL_COLOR_MATERIAL);
     glDisable(GL_BLEND);
-
-    glEnable( GL_CULL_FACE );
-
-
-
-
 
 }
 
@@ -145,22 +139,22 @@ void Arene ::cible (int cotes, double rayon, GLint texture, double gamma)
 }
 
 void Arene:: positionnerCible() {
-    int angleCible = (rand() % 360) - 180;
+    int angleC = (rand() % 360) - 180;
 
-    if(angleCible < angleTrou - 5 || angleCible > angleTrou + 5) {
+    if(angleC < angleT - 5 || angleC > angleT + 5) {
         int distanceCible = (rand() % 4) + 3;
 
-        xCible = distanceCible*cos(angleCible*M_PI/180);
-        yCible = distanceCible*sin(angleCible*M_PI/180);
+        xCible = distanceCible*cos(angleC*M_PI/180);
+        yCible = distanceCible*sin(angleC*M_PI/180);
     } else {
         positionnerCible();
     }
 }
 
-double Arene::calcul_alpha(double x, double y) {
-    double alpha = atan(y/x)*180/M_PI;
+double Arene::calcul_angle(double x, double y) {
+    double angle = atan(y/x)*180/M_PI;
     if(x<0){
-        alpha = alpha + 180;
+        angle = angle + 180;
     }
-    return alpha;
+    return angle;
 }
