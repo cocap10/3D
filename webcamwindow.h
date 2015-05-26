@@ -5,7 +5,6 @@
 #include <opencv2/core/core.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/objdetect/objdetect.hpp>
-#include <QScreen>
 
 class WebCamWindow : public QWidget
 {
@@ -23,6 +22,12 @@ public:
 
     int y() const;
     void setY(int y);
+    int frameWidth() const;
+    void setFrameWidth(int frameWidth);
+
+    int frameHeight() const;
+    void setFrameHeight(int frameHeight);
+
 signals:
     void posUpdated();
 
@@ -46,8 +51,6 @@ private:
     cv::Mat imgRoi_;
     cv::Mat imgResult_;
     cv::VideoCapture *webcam_;
-    QCursor *cur;
-    QScreen *screen;
     int x_;
     int y_;
     };

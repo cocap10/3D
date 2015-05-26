@@ -38,9 +38,6 @@ WebCamWindow::WebCamWindow(QWidget *parent)
 
     timer_=new QTimer(this);
     connect(timer_, SIGNAL(timeout()), this, SLOT(aquire()));
-    cur= new QCursor;
-    screen= QGuiApplication::screens().at(0);
-
 }
 
 WebCamWindow::~WebCamWindow()
@@ -96,7 +93,6 @@ void WebCamWindow::startWebCam()
         timer_->start(20);
         webCamButton_->setText(tr("Arreter jeu"));
         //affiche
-        qDebug() << "Dimension ecran   : "<<screen->size().width()<<", "<<screen->size().height();
         qDebug() << "Dimension webcam   : "<<frameWidth_<<", "<<frameHeight_;
 
     }
@@ -108,6 +104,26 @@ void WebCamWindow::startWebCam()
         webCamButton_->setText(tr("Demarrer jeu"));
     }
 }
+int WebCamWindow::frameHeight() const
+{
+    return frameHeight_;
+}
+
+void WebCamWindow::setFrameHeight(int frameHeight)
+{
+    frameHeight_ = frameHeight;
+}
+
+int WebCamWindow::frameWidth() const
+{
+    return frameWidth_;
+}
+
+void WebCamWindow::setFrameWidth(int frameWidth)
+{
+    frameWidth_ = frameWidth;
+}
+
 int WebCamWindow::y() const
 {
     return y_;
@@ -171,7 +187,7 @@ void WebCamWindow::trackHand()
 		cv::Rect rectRoi(matchLoc, Point( matchLoc.x + templateWidth_ , matchLoc.y + templateHeight_ ));
     	Mat roi(image_, rectRoi);
     	roi.copyTo(imgRoi_);
-    	imshow("roi",imgRoi_);
+        //imshow("roi",imgRoi_);
 		rectangle( image_, matchLoc, Point( matchLoc.x + templateWidth_ , matchLoc.y + templateHeight_ ), Scalar::all(0), 2, 8, 0 );
     
 	}
