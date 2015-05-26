@@ -13,6 +13,10 @@ public:
     ~Arene();
     void draw();
     void init();
+    void cible(int cotes, double rayon, GLint texture, double gamma);
+    void positionnerCible();
+    double calcul_alpha(double x, double y);
+
 private:
     //Propriete de l'arenne
     float rArenne;
@@ -20,7 +24,12 @@ private:
     float dTrou;
     float rTrou;
     int pas;
-    GLuint GLtexture;
+    GLuint GLtexture[3];
+
+    double xCible;
+    double yCible;
+
+    double angleTrou;
 
 
 };
