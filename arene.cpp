@@ -9,8 +9,8 @@ Arene::Arene()
     pas=10;
     qDebug()<<"Debut arene";
 
-    xCible = -2;
-    yCible = -4;
+    xCible = 3;
+    yCible = 5;
 
     angleT = calcul_angle(rTrou, rTrou);
 }
