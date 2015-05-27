@@ -59,16 +59,22 @@ void MyGLWidget::deplacerBras(int a, int b, int t, int p, int o, int nbPas)
 
 void MyGLWidget::brasAttrapeBalle()
 {
-    double rayon= sqrt (laBalle.getX()*laBalle.getX()+laBalle.getY()*laBalle.getY());
+    double rayon= sqrt (laBalle.getX()*laBalle.getX()+laBalle.getY()*laBalle.getY())+1;
     double beta=fmod((2*atan(laBalle.getY()/(laBalle.getX()+sqrt(laBalle.getX()*laBalle.getX()+laBalle.getY()*laBalle.getY())))),2.0*M_PI);
     beta=(M_PI-beta)*180/M_PI;
-    double alpha=acos((9.0*9.0+rayon*rayon-13.4*13.4)/(2.0*9.0*9.0*rayon));
+    double a=9.0;
+    double b=rayon;
+    double c=13.4;
+    double alpha=acos((a*a+b*b-c*c)/(2.0*a*b));
     alpha=(M_PI/2-alpha)*180/M_PI;
-    double teta=M_PI-acos((13.4*13.4+9.0*9.0-rayon*rayon)/(2.0*13.4*9.0));
+    a=13.4;
+    b=9.0;
+    c=rayon;
+    double teta=fmod(M_PI-acos((a*a+b*b-c*c)/(2.0*a*b)),2.0*M_PI);
+    qDebug()<<alpha<<" "<<beta<<" "<<teta;
     teta=teta*180/M_PI;
     qDebug()<<alpha<<" "<<beta<<" "<<teta;
     deplacerBras(alpha,beta,teta);
-    //deplacerBras(0,0,teta);
 }
 
 void MyGLWidget::deplacerBalle(double posX, double posY, double posZ, int nbPas)
