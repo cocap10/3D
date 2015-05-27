@@ -18,6 +18,7 @@ public:
     explicit MyGLWidget(QWidget *parent = 0);
     ~MyGLWidget();
     void deplacerBras(int a=0, int b=0,int t=0,int p=0,int o=45, int nbPas=50);
+    void brasAttrapeBalle();
     void deplacerBalle(double posX=5.0, double posY=5.0, double posZ=1.0, int nbPas=200);
 signals:
 

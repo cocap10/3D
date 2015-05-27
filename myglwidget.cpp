@@ -57,6 +57,16 @@ void MyGLWidget::deplacerBras(int a, int b, int t, int p, int o, int nbPas)
     }
 }
 
+void MyGLWidget::brasAttrapeBalle()
+{
+    double rayon= sqrt (laBalle.getX()*laBalle.getX()+laBalle.getY()*laBalle.getY());
+    double beta=tan(laBalle.getY()/laBalle.getX())* 180.0 / M_PI;
+    double alpha=acos((9.0*9.0+rayon*rayon-13.4*13.4)/(2.0*9.0*9.0*rayon));
+    double teta=acos((13.4*13.4+9.0*9.0-rayon*rayon)/(2.0*13.4*9.0));
+    deplacerBras(alpha,beta,teta);
+
+}
+
 void MyGLWidget::deplacerBalle(double posX, double posY, double posZ, int nbPas)
 {
     double initX=laBalle.getX();
@@ -253,6 +263,10 @@ void MyGLWidget::keyPressEvent(QKeyEvent *event)
     {
         this->deplacerBras();
         this->deplacerBalle();
+    }
+    if (event->key() == Qt::Key_A)
+    {
+        this->brasAttrapeBalle();
     }
 
 

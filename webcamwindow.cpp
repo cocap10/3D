@@ -193,6 +193,7 @@ void WebCamWindow::trackHand()
 	}
 	else
 	{
+        qDebug()<<"ELSE";
 		cv::rectangle( image_, matchLoc, Point( matchLoc.x + imgCam_.cols , matchLoc.y + imgCam_.rows ), CV_RGB(0,255,0), 2);
 	}
  	
