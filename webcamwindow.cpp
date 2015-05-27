@@ -189,19 +189,8 @@ void WebCamWindow::trackHand()
 
     minMaxLoc( imgResult_, &minVal, &maxVal, &minLoc, &maxLoc, Mat() );
 
-    if( maxVal > spinBox_->value())
-    { 
-        cpt=0;
-	 	matchLoc = maxLoc; 
-		cv::Rect rectRoi(matchLoc, Point( matchLoc.x + templateWidth_ , matchLoc.y + templateHeight_ ));
-    	Mat roi(image_, rectRoi);
-    	roi.copyTo(imgRoi_);
-        //imshow("roi",imgRoi_);
-		rectangle( image_, matchLoc, Point( matchLoc.x + templateWidth_ , matchLoc.y + templateHeight_ ), Scalar::all(0), 2, 8, 0 );
-    
-	}
-	else
-	{
+    if( maxVal <= spinBox_->value())
+    {
         qDebug()<<"Traking perdu";
         cpt++;
         rectangle( image_, matchLoc, Point( matchLoc.x + templateWidth_ , matchLoc.y + templateHeight_ ), CV_RGB(0,255,0), 2 );
@@ -212,19 +201,30 @@ void WebCamWindow::trackHand()
             //timer_->timeout();
 
         }
+        waitKey(10);
+    }
+    else
+    {
+        cpt=0;
+        matchLoc = maxLoc;
+        cv::Rect rectRoi(matchLoc, Point( matchLoc.x + templateWidth_ , matchLoc.y + templateHeight_ ));
+        Mat roi(image_, rectRoi);
+        roi.copyTo(imgRoi_);
+        //imshow("roi",imgRoi_);
+        rectangle( image_, matchLoc, Point( matchLoc.x + templateWidth_ , matchLoc.y + templateHeight_ ), Scalar::all(0), 2, 8, 0 );
+        waitKey(10);
+        //normalisation
+        x_ = matchLoc.x/(double)result_cols;
+        y_ = matchLoc.y/(double)result_rows;
 
+        emit posUpdated();
     }
 
- 	
+
     /// Show me what you got
     
 
-    waitKey(10);
-    //normalisation
-    x_ = matchLoc.x/(double)result_cols;
-    y_ = matchLoc.y/(double)result_rows;
 
-    emit posUpdated();
     //affichage
     //qDebug() << "Position tracker :"<< matchLoc.x << ", " << matchLoc.y;
     
