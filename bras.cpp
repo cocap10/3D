@@ -116,7 +116,7 @@ void Bras::draw()
 
     glPushMatrix();
         glRotatef(alpha,1,0,0);
-        glRotatef(beta, 0,1,0);
+        glRotatef(beta, 0,0,1);
         //bras
         glPushMatrix();
             //debut-bras
