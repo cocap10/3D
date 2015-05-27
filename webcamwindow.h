@@ -45,6 +45,7 @@ private:
     QPushButton *webCamButton_;
     QCheckBox *detectCheckBox_;
     QCheckBox *trackCheckBox_;
+    QDoubleSpinBox *spinBox_;
     QTimer *timer_;
     QLabel *label_;
     cv::Mat image_;

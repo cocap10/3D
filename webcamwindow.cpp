@@ -16,18 +16,25 @@ WebCamWindow::WebCamWindow(QWidget *parent)
     templateWidth_=50;
     templateHeight_=50;
 
+    spinBox_= new QDoubleSpinBox;
+
     webCamButton_ = new QPushButton(tr("Redemarrer webcam"));
     label_ = new QLabel(tr("Image"));
     detectCheckBox_ = new QCheckBox(tr("Detection initiale"));
     trackCheckBox_= new QCheckBox(tr("Tracking"));
-
+    spinBox_->setRange(0.00, 1.00);
+    spinBox_->setSingleStep(0.01);
+    spinBox_->setValue(0.97);
     connect(webCamButton_, SIGNAL(clicked()), this, SLOT(startWebCam()));
-
+    QVBoxLayout *vl2=new QVBoxLayout;
+    vl2->addWidget(new QLabel(tr("seuil :")));
+    vl2->addWidget(spinBox_);
     QVBoxLayout *vl1=new QVBoxLayout;
     vl1->addWidget(detectCheckBox_);
     vl1->addWidget(trackCheckBox_);
     QHBoxLayout *hl=new QHBoxLayout;
     hl->addWidget(webCamButton_);
+    hl->addLayout(vl2);
     hl->addLayout(vl1);
     QVBoxLayout *layout = new QVBoxLayout;
     layout->addWidget(label_);
@@ -182,7 +189,7 @@ void WebCamWindow::trackHand()
 
     minMaxLoc( imgResult_, &minVal, &maxVal, &minLoc, &maxLoc, Mat() );
 
-    if( maxVal > 0.97)
+    if( maxVal > spinBox_->value())
     { 
         cpt=0;
 	 	matchLoc = maxLoc; 
@@ -195,8 +202,9 @@ void WebCamWindow::trackHand()
 	}
 	else
 	{
+        qDebug()<<"Traking perdu";
         cpt++;
-        //cv::rectangle( image_, matchLoc, Point( matchLoc.x + imgRoi_.cols , matchLoc.y + imgRoi_.rows ), CV_RGB(0,255,0), 2);
+        rectangle( image_, matchLoc, Point( matchLoc.x + templateWidth_ , matchLoc.y + templateHeight_ ), CV_RGB(0,255,0), 2 );
         if (cpt>10)
         {
             trackCheckBox_->click();
