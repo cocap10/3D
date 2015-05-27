@@ -47,13 +47,13 @@ private:
     QCheckBox *trackCheckBox_;
     QTimer *timer_;
     QLabel *label_;
-    cv::Mat imgCam_;
     cv::Mat image_;
     cv::Mat imgRoi_;
     cv::Mat imgResult_;
     cv::VideoCapture *webcam_;
     double x_;
     double y_;
+    int cpt;
     };
 
 #endif // WEBCAMWINDOW_H

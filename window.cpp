@@ -30,6 +30,7 @@ void Window::keyPressEvent(QKeyEvent *e)
 void Window::setPos() {
     double x = ui->widget->x();
     double y = ui->widget->y();
+    qDebug()<<"balle1 (x,y)  : "<<x<<", "<<y;
     x=10-x*20;
     y=10-y*20;
     //qDebug()<<"balle (x,y)  : "<<x<<", "<<y;
@@ -40,7 +41,7 @@ void Window::setPos() {
     double maxX=10*cos(angle);
     double maxY=10*sin(angle);
     qDebug()<<"Max (x,y)  : "<<maxX<<", "<<maxY;
-    qDebug()<<"balle1 (x,y)  : "<<x<<", "<<y;
+    /*qDebug()<<"balle1 (x,y)  : "<<x<<", "<<y;
     if (x>0)
         x=std::min(x,maxX-1);
     else
@@ -51,5 +52,5 @@ void Window::setPos() {
         y=std::max(y,maxY+1);
     qDebug()<<"balle2 (x,y)  : "<<x<<", "<<y;
 
-    ui->myGLWidget->deplacerBalle(x, y,1,4);
+    ui->myGLWidget->deplacerBalle(x, y,1,4);*/
 }

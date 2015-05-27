@@ -38,6 +38,7 @@ WebCamWindow::WebCamWindow(QWidget *parent)
 
     timer_=new QTimer(this);
     connect(timer_, SIGNAL(timeout()), this, SLOT(aquire()));
+    cpt=0;
 }
 
 WebCamWindow::~WebCamWindow()
@@ -70,8 +71,7 @@ void WebCamWindow::aquire()
     {
         if (webcam_->read(image_))
         {
-            //            *webcam_ >> imgCam_;
-            //            ::resize(imgCam_,image_,Size(),0.5,0.5,CV_INTER_AREA);
+
             if (detectCheckBox_->isChecked() && !trackCheckBox_->isChecked()) detectHand();
             if (trackCheckBox_->isChecked()) trackHand();
             displayImage();
@@ -183,6 +183,7 @@ void WebCamWindow::trackHand()
 
     if( maxVal > 0.97)
     { 
+        cpt=0;
 	 	matchLoc = maxLoc; 
 		cv::Rect rectRoi(matchLoc, Point( matchLoc.x + templateWidth_ , matchLoc.y + templateHeight_ ));
     	Mat roi(image_, rectRoi);
@@ -193,9 +194,18 @@ void WebCamWindow::trackHand()
 	}
 	else
 	{
-        qDebug()<<"ELSE";
-		cv::rectangle( image_, matchLoc, Point( matchLoc.x + imgCam_.cols , matchLoc.y + imgCam_.rows ), CV_RGB(0,255,0), 2);
-	}
+        cpt++;
+        //cv::rectangle( image_, matchLoc, Point( matchLoc.x + imgRoi_.cols , matchLoc.y + imgRoi_.rows ), CV_RGB(0,255,0), 2);
+        if (cpt>10)
+        {
+            trackCheckBox_->click();
+            cpt=0;
+            //timer_->timeout();
+
+        }
+
+    }
+
  	
     /// Show me what you got
     
@@ -206,7 +216,6 @@ void WebCamWindow::trackHand()
     y_ = matchLoc.y/(double)result_rows;
 
     emit posUpdated();
-
     //affichage
     //qDebug() << "Position tracker :"<< matchLoc.x << ", " << matchLoc.y;
     
