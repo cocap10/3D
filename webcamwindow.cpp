@@ -16,7 +16,7 @@ WebCamWindow::WebCamWindow(QWidget *parent)
     templateWidth_=50;
     templateHeight_=50;
 
-    webCamButton_ = new QPushButton(tr("Demarrer aquisition"));
+    webCamButton_ = new QPushButton(tr("Redemarrer webcam"));
     label_ = new QLabel(tr("Image"));
     detectCheckBox_ = new QCheckBox(tr("Detection initiale"));
     trackCheckBox_= new QCheckBox(tr("Tracking"));
@@ -39,6 +39,7 @@ WebCamWindow::WebCamWindow(QWidget *parent)
     timer_=new QTimer(this);
     connect(timer_, SIGNAL(timeout()), this, SLOT(aquire()));
     cpt=0;
+    webCamButton_->clicked();
 }
 
 WebCamWindow::~WebCamWindow()
@@ -91,7 +92,7 @@ void WebCamWindow::startWebCam()
         qDebug()<<"height: "<<webcam_->get(CV_CAP_PROP_FRAME_HEIGHT);
 
         timer_->start(20);
-        webCamButton_->setText(tr("Arreter jeu"));
+        webCamButton_->setText(tr("Arreter webcam"));
         //affiche
         qDebug() << "Dimension webcam   : "<<frameWidth_<<", "<<frameHeight_;
 
@@ -101,7 +102,7 @@ void WebCamWindow::startWebCam()
         timer_->stop();
         delete webcam_;
         webcam_=0;
-        webCamButton_->setText(tr("Demarrer jeu"));
+        webCamButton_->setText(tr("Redemarer webcam"));
     }
 }
 double WebCamWindow::y() const
