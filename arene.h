@@ -17,6 +17,12 @@ public:
     void positionnerCible();
     double calcul_angle(double x, double y);
 
+    double getYCible() const;
+    void setYCible(double value);
+
+    double getXCible() const;
+    void setXCible(double value);
+
 private:
     //Propriete de l'arenne
     float rArenne;

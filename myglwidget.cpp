@@ -117,6 +117,16 @@ void MyGLWidget::deplacerBalle(double posX, double posY, double posZ, int nbPas)
         //qDebug()<<i <<"   x: "<<tmpX<<" y: "<<tmpY;
         updateGL();
         QThread::usleep(100);
+        //qDebug()<<"balle :"<<(int)laBalle.getX()<<" "<<(int)laBalle.getY();
+        //qDebug()<<"cible :"<<(int)lArene.getXCible()<<" "<<(int)lArene.getYCible();
+        if((int)laBalle.getX()==(int)lArene.getXCible() && (int)laBalle.getY()==(int)lArene.getYCible())
+        {
+            qDebug()<<"BALLE SUR CIBLE";
+            emit finPartie();
+            brasAttrapeBalle();
+            reinitJeu();
+
+        }
     }
 }
 
@@ -323,4 +333,14 @@ void MyGLWidget::draw()
         leBras.draw2();
     }
     lArene.draw();
+}
+
+void MyGLWidget::reinitJeu()
+{
+    deplacerBras();
+    lArene.positionnerCible();
+    laBalle.setX(0);
+    laBalle.setY(0);
+    laBalle.setZ(0);
+
 }

@@ -191,7 +191,7 @@ void WebCamWindow::trackHand()
 
     if( maxVal <= spinBox_->value())
     {
-        qDebug()<<"Traking perdu";
+        //qDebug()<<"Traking perdu";
         cpt++;
         rectangle( image_, matchLoc, Point( matchLoc.x + templateWidth_ , matchLoc.y + templateHeight_ ), CV_RGB(0,255,0), 2 );
         if (cpt>10)

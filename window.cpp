@@ -12,7 +12,6 @@ Window::Window(QWidget *parent) :
 {
     ui->setupUi(this);
     connect(ui->widget, SIGNAL(posUpdated()),this, SLOT(setPos()));
-    //connect(ui->webCamWidget, SIGNAL(locChanged()), , SLOT(updatePointeur()));
 }
 
 Window::~Window()
@@ -36,7 +35,7 @@ void Window::setPos() {
     double angle=fmod((2*atan(y/(x+sqrt(x*x+y*y)))),2.0*M_PI);
 
 
-    qDebug()<<"angle   (en degre) : "<<angle*180.0/M_PI;
+    //qDebug()<<"angle   (en degre) : "<<angle*180.0/M_PI;
     double maxX=9*cos(angle);
     double maxY=9*sin(angle);
     if (x>0)

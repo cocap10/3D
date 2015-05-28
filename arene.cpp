@@ -150,3 +150,23 @@ double Arene::calcul_angle(double x, double y) {
     }
     return angle;
 }
+double Arene::getYCible() const
+{
+    return yCible;
+}
+
+void Arene::setYCible(double value)
+{
+    yCible = value;
+}
+double Arene::getXCible() const
+{
+    return xCible;
+}
+
+void Arene::setXCible(double value)
+{
+    xCible = value;
+}
+
+
