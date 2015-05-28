@@ -115,7 +115,9 @@ void Bras::draw()
     glPopMatrix();
 
     glPushMatrix();
-        glRotatef(alpha,1,0,0);
+
+        //glRotatef(alpha,cos(beta),sin(beta),0);
+        glRotatef(alpha,0,1,0);
         glRotatef(beta, 0,0,1);
         //bras
         glPushMatrix();

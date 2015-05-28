@@ -38,6 +38,12 @@ void MyGLWidget::deplacerBras(double a, double b, double t, int p, int o, int nb
     double tmpT;
     int tmpP;
     int tmpO;
+    /*for (int i=0; i<nbPas+1; i++)
+    {
+        tmpA=(initA*(nbPas-i)+(a*i))/(double)nbPas;
+        tmpT=(initT*(nbPas-i)+(t*i))/(double)nbPas;
+        updateGL();
+    }*/
     for (int i=0; i<nbPas+1; i++)
     {
         tmpA=(initA*(nbPas-i)+(a*i))/(double)nbPas;
@@ -57,24 +63,30 @@ void MyGLWidget::deplacerBras(double a, double b, double t, int p, int o, int nb
     }
 }
 
+
 void MyGLWidget::brasAttrapeBalle()
 {
     double rayon= sqrt (laBalle.getX()*laBalle.getX()+laBalle.getY()*laBalle.getY())+1;
-    double beta=fmod((2*atan(laBalle.getY()/(laBalle.getX()+sqrt(laBalle.getX()*laBalle.getX()+laBalle.getY()*laBalle.getY())))),2.0*M_PI);
+    double beta=fmod(M_PI/2+(2*atan(laBalle.getY()/(laBalle.getX()+sqrt(laBalle.getX()*laBalle.getX()+laBalle.getY()*laBalle.getY())))),2.0*M_PI);
     beta=beta*180/M_PI;
     double a=5.0;
     double b=rayon;
-    double c=13.4;
-    double alpha=acos((a*a+b*b-c*c)/(2.0*a*b));
+    double c=8.6;
+    double alpha=acos((a*a+b*b-c*c)/(2.0*a*b))-M_PI/2;
     alpha=alpha*180/M_PI;
-    a=13.4;
+    a=8.6;
     b=5.0;
     c=rayon;
-    double teta=fmod(acos((a*a+b*b-c*c)/(2.0*a*b)),2.0*M_PI);
+    double teta=M_PI-acos((a*a+b*b-c*c)/(2.0*a*b));
     teta=teta*180/M_PI;
+
     qDebug()<<alpha<<" "<<beta<<" "<<teta;
+
+    //deplacerBras(alpha,0,0);
+    //deplacerBras(alpha,beta,0);
     //deplacerBras(alpha,beta,teta);
-    deplacerBras(0,0,90);
+    deplacerBras(0,beta,teta);
+    deplacerBras(alpha,beta,teta);
 
 }
 
@@ -291,9 +303,4 @@ void MyGLWidget::draw()
    leBras.draw();
    laBalle.draw();
    lArene.draw();
-}
-
-int MyGLWidget::calculerAngle(int a, int b, int c)
-{
-    //return acos (param) * 180.0 / PI;
 }
