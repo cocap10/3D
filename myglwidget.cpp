@@ -15,7 +15,7 @@ MyGLWidget::MyGLWidget(QWidget *parent)
     yRot = 270;
     zRot = 0;
 
-	xTrans = 0;
+    xTrans = 0;
     yTrans = 0;
     zTrans = 0;
     setFocus();
@@ -73,7 +73,8 @@ void MyGLWidget::brasAttrapeBalle()
     double a=5.0;
     double b=rayon;
     double c=8.6;
-    double alpha=acos((a*a+b*b-c*c)/(2.0*a*b))-M_PI/2;
+    double alpha=acos((a*a+b*b-c*c)/(2.0*a*b));
+    alpha=M_PI/2-alpha;
     alpha=alpha*180/M_PI;
     a=8.6;
     b=5.0;
@@ -83,10 +84,6 @@ void MyGLWidget::brasAttrapeBalle()
 
     qDebug()<<alpha<<" "<<beta<<" "<<teta;
 
-    //deplacerBras(alpha,0,0);
-    //deplacerBras(alpha,beta,0);
-    //deplacerBras(alpha,beta,teta);
-    deplacerBras(0,beta,teta);
     deplacerBras(alpha,beta,teta);
 
 
@@ -318,5 +315,5 @@ void MyGLWidget::draw()
     {
         leBras.draw2();
     }
-        lArene.draw();
+    lArene.draw();
 }
