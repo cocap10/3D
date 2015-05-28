@@ -66,7 +66,7 @@ void Arene::draw()
 
     glPushMatrix();
         glTranslatef(xCible, yCible, 0.6);
-        cible(100,1,GLtexture[2],0.2);
+        cible(100,1,GLtexture[2]);
     glPopMatrix();
 
 
@@ -100,7 +100,7 @@ std::vector<Point> calculerPointsCercles(float o, float d, float r, int pas)
     return result;
 }
 
-void Arene ::cible (int cotes, double rayon, GLint texture, double gamma)
+void Arene ::cible (int cotes, double rayon, GLint texture)
 {
     if(cotes > 0 && rayon > 0)
     {
@@ -108,23 +108,21 @@ void Arene ::cible (int cotes, double rayon, GLint texture, double gamma)
 
         glEnable( GL_TEXTURE_2D );
 
-        //glColor4f(1,1,1, gamma);
-        /* BIND TEXTURE */
         glBindTexture(GL_TEXTURE_2D, texture);
 
         glBegin(GL_TRIANGLE_FAN);
 
         //-----centre-----
         glTexCoord2f(0.5,0.5);
-        glVertex3f(0,0,0);
+        glVertex3f(0,0,-0.5);
 
         //-----sommets-----
         for(int i = 0; i<cotes; i++)
         {
             glTexCoord2f((1+cos(i*2*M_PI/cotes))/2, (1+sin(i*2*M_PI/cotes))/2);
-            glVertex3f(rayon*cos(i*2*M_PI/cotes), rayon*sin(i*2*M_PI/cotes), 0);
+            glVertex3f(rayon*cos(i*2*M_PI/cotes), rayon*sin(i*2*M_PI/cotes), -0.5);
         }
-        glVertex3f(rayon,0,0);
+        glVertex3f(rayon,0,-0.5);
 
         glEnd();
 
@@ -136,7 +134,7 @@ void Arene:: positionnerCible() {
     int angleC = (rand() % 360) - 180;
 
     if(angleC < angleT - 5 || angleC > angleT + 5) {
-        int distanceCible = (rand() % 4) + 3;
+        int distanceCible = (rand() % 4) + 4;
 
         xCible = distanceCible*cos(angleC*M_PI/180);
         yCible = distanceCible*sin(angleC*M_PI/180);
