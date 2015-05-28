@@ -320,12 +320,3 @@ void MyGLWidget::draw()
     }
         lArene.draw();
 }
-<<<<<<< HEAD
-=======
-
-
-int MyGLWidget::calculerAngle(int a, int b, int c)
-{
-    //return acos (param) * 180.0 / PI;
-}
->>>>>>> 4387f25f66dbc050969bb89ebfd229ca57f57180
