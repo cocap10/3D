@@ -115,8 +115,10 @@ void Bras::draw()
     glPopMatrix();
 
     glPushMatrix();
-        glRotatef(alpha,1,0,0);
+
+        //glRotatef(alpha,cos(beta),sin(beta),0);
         glRotatef(beta, 0,0,1);
+        glRotatef(alpha,1,0,0);
         //bras
         glPushMatrix();
             //debut-bras
@@ -168,19 +170,78 @@ void Bras::draw()
 }
 
 void Bras::draw2(){
-    this->draw();
+    //qDebug()<<"Draw Bras";
+       //socle
     glPushMatrix();
-        glEnable(GL_TEXTURE_2D);
-        glBindTexture(GL_TEXTURE_2D, GLtexture[0]);
-        quadric=gluNewQuadric();
-        gluQuadricDrawStyle(quadric, GLU_FILL);
-        gluQuadricTexture(quadric,1);
-        glTranslatef(0,0,14);
-        glScalef(2,2,2);
-        gluSphere(quadric,0.5,10,10);
-        gluDeleteQuadric(quadric);
-        glDisable(GL_TEXTURE_2D);
+        glScalef(5,5, 0.5);
+        glCallList(listCylindre);
     glPopMatrix();
+
+    glPushMatrix();
+
+        //glRotatef(alpha,cos(beta),sin(beta),0);
+        glRotatef(beta, 0,0,1);
+        glRotatef(alpha,1,0,0);
+        //bras
+        glPushMatrix();
+            //debut-bras
+            glTranslatef(0,0,1.5);
+            glCallList(listDemiBras);
+            glTranslatef(0,0,5);
+            glRotatef(teta,1,0,0);
+            glPushMatrix();
+                //avant-bras
+                glCallList(listDemiBras);
+                glTranslatef(0,0,5);
+                glRotatef(pi,0,0,1);
+                glPushMatrix();
+                    //main
+                    glPushMatrix();
+                        glEnable(GL_TEXTURE_2D);
+                        glBindTexture(GL_TEXTURE_2D, GLtexture[0]);
+                        quadric=gluNewQuadric();
+                        gluQuadricDrawStyle(quadric, GLU_FILL);
+                        gluQuadricTexture(quadric,1);
+                        glScalef(2,2,2);
+                        gluSphere(quadric,0.5,10,10);
+                        gluDeleteQuadric(quadric);
+                        glDisable(GL_TEXTURE_2D);
+
+                    glPopMatrix();
+                    glPushMatrix();
+                        glTranslatef(0,-0.5,0.5);
+                        glRotatef(omega,1,0,0);
+                        //doigt1
+                        glCallList(listDoigt);
+                    glPopMatrix();
+                    glPushMatrix();
+                        glTranslatef(0,0.5,0.5);
+                        glRotated(omega,-1,0,0);
+                        //doigt2
+                        glRotatef(180,0,0,1);
+                        glCallList(listDoigt);
+                    glPopMatrix();
+                    //balle
+                    glPushMatrix();
+                        glEnable(GL_TEXTURE_2D);
+                        glBindTexture(GL_TEXTURE_2D, GLtexture[0]);
+                        quadric=gluNewQuadric();
+                        gluQuadricDrawStyle(quadric, GLU_FILL);
+                        gluQuadricTexture(quadric,1);
+                        glTranslatef(0,0,2);
+                        glScalef(2,2,2);
+                        gluSphere(quadric,0.5,10,10);
+                        gluDeleteQuadric(quadric);
+                        glDisable(GL_TEXTURE_2D);
+                    glPopMatrix();
+                glPopMatrix();
+            glPopMatrix();
+        glPopMatrix();
+    glPopMatrix();
+
+    glFlush();
+
+
 
 }
 

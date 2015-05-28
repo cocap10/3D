@@ -3,6 +3,7 @@
 
 #include <GL/glu.h>
 #include <loadtgadisplaycdv.h>
+#include <math.h>
 
 class Bras
 {

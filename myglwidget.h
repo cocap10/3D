@@ -36,6 +36,7 @@ protected:
     void keyPressEvent(QKeyEvent *event);
 
 
+
 public slots:
     // slots for xyz-rotation slider
     void setXRotation(int angle);
@@ -51,7 +52,6 @@ signals:
 
 private:
     void draw();
-    int calculerAngle(int a, int b , int c);
 
     int xRot;
     int yRot;
