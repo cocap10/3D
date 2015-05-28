@@ -83,8 +83,16 @@ void MyGLWidget::brasAttrapeBalle()
     teta=teta*180/M_PI;
 
     qDebug()<<alpha<<" "<<beta<<" "<<teta;
-
     deplacerBras(alpha,beta,teta);
+    balleAttrapee=true;
+    deplacerBras(-12.4742,90,137.062);
+    laBalle.setX(5.0);
+    laBalle.setY(0);
+    laBalle.setZ(0);
+    balleAttrapee=false;
+    updateGL();
+
+
 
 
 }
@@ -307,9 +315,8 @@ void MyGLWidget::draw()
     {
 
         laBalle.draw();
-        leBras.draw2();
+        leBras.draw();
     }
-
 
     else
     {
