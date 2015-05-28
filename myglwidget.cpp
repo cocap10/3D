@@ -20,7 +20,10 @@ MyGLWidget::MyGLWidget(QWidget *parent)
     yTrans = 0;
     zTrans = 0;
     setFocus();
+
+
 }
+
 
 
 
