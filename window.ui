@@ -36,14 +36,14 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="ButtonStart">
        <property name="text">
         <string>Commencer Partie</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="Time">
        <property name="text">
         <string>Time</string>
        </property>
@@ -121,24 +121,7 @@
   </customwidget>
  </customwidgets>
  <resources/>
- <connections>
-  <connection>
-   <sender>pushButton</sender>
-   <signal>clicked()</signal>
-   <receiver>Window</receiver>
-   <slot>commencer()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>416</x>
-     <y>19</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>248</x>
-     <y>221</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
  <slots>
   <slot>commencer()</slot>
  </slots>
