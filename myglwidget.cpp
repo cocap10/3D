@@ -61,20 +61,20 @@ void MyGLWidget::brasAttrapeBalle()
 {
     double rayon= sqrt (laBalle.getX()*laBalle.getX()+laBalle.getY()*laBalle.getY())+1;
     double beta=fmod((2*atan(laBalle.getY()/(laBalle.getX()+sqrt(laBalle.getX()*laBalle.getX()+laBalle.getY()*laBalle.getY())))),2.0*M_PI);
-    beta=(M_PI/2-beta)*180/M_PI;
-    double a=9.0;
+    beta=beta*180/M_PI;
+    double a=5.0;
     double b=rayon;
     double c=13.4;
     double alpha=acos((a*a+b*b-c*c)/(2.0*a*b));
-    alpha=(M_PI/2-alpha)*180/M_PI;
+    alpha=alpha*180/M_PI;
     a=13.4;
-    b=9.0;
+    b=5.0;
     c=rayon;
-    double teta=fmod(M_PI-acos((a*a+b*b-c*c)/(2.0*a*b)),2.0*M_PI);
+    double teta=fmod(acos((a*a+b*b-c*c)/(2.0*a*b)),2.0*M_PI);
     teta=teta*180/M_PI;
     qDebug()<<alpha<<" "<<beta<<" "<<teta;
     //deplacerBras(alpha,beta,teta);
-    deplacerBras(0,beta,teta);
+    deplacerBras(0,0,90);
 
 }
 

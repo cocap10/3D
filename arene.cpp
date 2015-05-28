@@ -36,7 +36,6 @@ void Arene::draw()
     std::vector<Point> pointsCercle = calculerPointsCercles(0,0,rArenne,pas);
     glEnable(GL_DEPTH_TEST);
     glDepthFunc(GL_LEQUAL);
-    glDisable(GL_CULL_FACE);
     glEnable ( GL_NORMALIZE );
     glDepthMask ( GL_TRUE );
     glBlendFunc(GL_ONE_MINUS_SRC_ALPHA, GL_SRC_ALPHA);
@@ -44,10 +43,8 @@ void Arene::draw()
     glLineWidth ( 1.0f );
     glEnable(GL_COLOR_MATERIAL);
     glEnable( GL_DEPTH_TEST );
-    glEnable( GL_CULL_FACE );
     glColor3f(1,1,1);
     glEnable( GL_TEXTURE_2D );
-    glDisable( GL_CULL_FACE );
     glBindTexture(GL_TEXTURE_2D, GLtexture[1]);
     glBegin(GL_TRIANGLE_STRIP);
     //Boucle de construction
@@ -65,9 +62,7 @@ void Arene::draw()
     }
     glEnd();
     glDisable( GL_TEXTURE_2D );
-    glDisable( GL_CULL_FACE );
 
-    glEnable( GL_CULL_FACE );
 
     glPushMatrix();
         glTranslatef(xCible, yCible, 0.6);
@@ -109,7 +104,7 @@ void Arene ::cible (int cotes, double rayon, GLint texture, double gamma)
 {
     if(cotes > 0 && rayon > 0)
     {
-        glDisable(GL_CULL_FACE);
+
 
         glEnable( GL_TEXTURE_2D );
 
@@ -134,7 +129,6 @@ void Arene ::cible (int cotes, double rayon, GLint texture, double gamma)
         glEnd();
 
         glDisable( GL_TEXTURE_2D );
-        glEnable( GL_CULL_FACE );
     }
 }
 
