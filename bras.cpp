@@ -182,33 +182,6 @@ void Bras::setListDemiBras(const GLuint &value)
 {
     listDemiBras = value;
 }
-int Bras::getAlpha() const
-{
-    return alpha;
-}
-
-void Bras::setAlpha(int value)
-{
-    alpha = value;
-}
-int Bras::getBeta() const
-{
-    return beta;
-}
-
-void Bras::setBeta(int value)
-{
-    beta = value;
-}
-int Bras::getTeta() const
-{
-    return teta;
-}
-
-void Bras::setTeta(int value)
-{
-    teta = value;
-}
 int Bras::getPi() const
 {
     return pi;
@@ -227,6 +200,36 @@ void Bras::setOmega(int value)
 {
     omega = value;
 }
+double Bras::getTeta() const
+{
+    return teta;
+}
+
+void Bras::setTeta(double value)
+{
+    teta = value;
+}
+double Bras::getBeta() const
+{
+    return beta;
+}
+
+void Bras::setBeta(double value)
+{
+    beta = value;
+}
+double Bras::getAlpha() const
+{
+    return alpha;
+}
+
+void Bras::setAlpha(double value)
+{
+    alpha = value;
+}
+
+
+
 
 
 

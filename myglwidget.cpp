@@ -26,23 +26,23 @@ MyGLWidget::~MyGLWidget()
     qDebug()<<"Fin myglwidget";
 }
 
-void MyGLWidget::deplacerBras(int a, int b, int t, int p, int o, int nbPas)
+void MyGLWidget::deplacerBras(double a, double b, double t, int p, int o, int nbPas)
 {
-    int initA=leBras.getAlpha();
-    int initB=leBras.getBeta();
-    int initT=leBras.getTeta();
+    double initA=leBras.getAlpha();
+    double initB=leBras.getBeta();
+    double initT=leBras.getTeta();
     int initP=leBras.getPi();
     int initO=leBras.getOmega();
-    int tmpA;
-    int tmpB;
-    int tmpT;
+    double tmpA;
+    double tmpB;
+    double tmpT;
     int tmpP;
     int tmpO;
     for (int i=0; i<nbPas+1; i++)
     {
-        tmpA=(initA*(nbPas-i)+(a*i))/nbPas;
-        tmpB=(initB*(nbPas-i)+(b*i))/nbPas;
-        tmpT=(initT*(nbPas-i)+(t*i))/nbPas;
+        tmpA=(initA*(nbPas-i)+(a*i))/(double)nbPas;
+        tmpB=(initB*(nbPas-i)+(b*i))/(double)nbPas;
+        tmpT=(initT*(nbPas-i)+(t*i))/(double)nbPas;
         tmpP=(initP*(nbPas-i)+(p*i))/nbPas;
         tmpO=(initO*(nbPas-i)+(o*i))/nbPas;
         leBras.setAlpha(tmpA);
@@ -61,7 +61,7 @@ void MyGLWidget::brasAttrapeBalle()
 {
     double rayon= sqrt (laBalle.getX()*laBalle.getX()+laBalle.getY()*laBalle.getY())+1;
     double beta=fmod((2*atan(laBalle.getY()/(laBalle.getX()+sqrt(laBalle.getX()*laBalle.getX()+laBalle.getY()*laBalle.getY())))),2.0*M_PI);
-    beta=(M_PI-beta)*180/M_PI;
+    beta=(M_PI/2-beta)*180/M_PI;
     double a=9.0;
     double b=rayon;
     double c=13.4;
@@ -71,10 +71,11 @@ void MyGLWidget::brasAttrapeBalle()
     b=9.0;
     c=rayon;
     double teta=fmod(M_PI-acos((a*a+b*b-c*c)/(2.0*a*b)),2.0*M_PI);
-    qDebug()<<alpha<<" "<<beta<<" "<<teta;
     teta=teta*180/M_PI;
     qDebug()<<alpha<<" "<<beta<<" "<<teta;
-    deplacerBras(alpha,beta,teta);
+    //deplacerBras(alpha,beta,teta);
+    deplacerBras(0,beta,teta);
+
 }
 
 void MyGLWidget::deplacerBalle(double posX, double posY, double posZ, int nbPas)

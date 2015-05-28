@@ -17,20 +17,20 @@ public:
     GLuint getListDemiBras() const;
     void setListDemiBras(const GLuint &value);
 
-    int getAlpha() const;
-    void setAlpha(int value);
-
-    int getBeta() const;
-    void setBeta(int value);
-
-    int getTeta() const;
-    void setTeta(int value);
-
     int getPi() const;
     void setPi(int value);
 
     int getOmega() const;
     void setOmega(int value);
+
+    double getTeta() const;
+    void setTeta(double value);
+
+    double getBeta() const;
+    void setBeta(double value);
+
+    double getAlpha() const;
+    void setAlpha(double value);
 
 private:
     // pour utiliser gluSphere gluCylinder  et gluDisk
@@ -42,9 +42,9 @@ private:
     GLuint listDemiBras;
     GLuint listDoigt;
     //pour bouger le bras
-    int alpha;
-    int beta;
-    int teta;
+    double alpha;
+    double beta;
+    double teta;
     int pi;
     int omega;
 
