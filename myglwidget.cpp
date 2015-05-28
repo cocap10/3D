@@ -20,6 +20,19 @@ MyGLWidget::MyGLWidget(QWidget *parent)
     yTrans = 0;
     zTrans = 0;
     setFocus();
+
+    QTimer * timer = new QTimer(this);
+    timer->setInterval(1000);
+
+    connect(ui->ButtonStart,SIGNAL(clicked()),timer,SLOT(Update()));
+}
+
+MyGLWidget::Update(){
+    if (timer=0)
+    timer->start();
+    else
+        while ()
+
 }
 
 
