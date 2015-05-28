@@ -7,6 +7,7 @@
 
 #include <GL/glu.h>
 #include <QDebug>
+#include <QTimer>
 
 MyGLWidget::MyGLWidget(QWidget *parent)
     : QGLWidget(QGLFormat(QGL::SampleBuffers), parent)
@@ -20,6 +21,9 @@ MyGLWidget::MyGLWidget(QWidget *parent)
     zTrans = 0;
     setFocus();
 }
+
+
+
 
 MyGLWidget::~MyGLWidget()
 {
