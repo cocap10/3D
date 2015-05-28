@@ -11,6 +11,7 @@ public:
     ~Bras();
     void init();
     void draw();
+    void draw2();
     GLuint getListCylindre() const;
     void setListCylindre(const GLuint &value);
 

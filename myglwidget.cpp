@@ -59,6 +59,7 @@ void MyGLWidget::deplacerBras(double a, double b, double t, int p, int o, int nb
 
 void MyGLWidget::brasAttrapeBalle()
 {
+
     double rayon= sqrt (laBalle.getX()*laBalle.getX()+laBalle.getY()*laBalle.getY())+1;
     double beta=fmod((2*atan(laBalle.getY()/(laBalle.getX()+sqrt(laBalle.getX()*laBalle.getX()+laBalle.getY()*laBalle.getY())))),2.0*M_PI);
     beta=beta*180/M_PI;
@@ -75,6 +76,7 @@ void MyGLWidget::brasAttrapeBalle()
     qDebug()<<alpha<<" "<<beta<<" "<<teta;
     //deplacerBras(alpha,beta,teta);
     deplacerBras(0,0,90);
+
 
 }
 
@@ -280,6 +282,11 @@ void MyGLWidget::keyPressEvent(QKeyEvent *event)
         this->brasAttrapeBalle();
     }
 
+    if (event->key() == Qt::Key_Y)
+    {
+        lArene.positionnerCible();
+    }
+
 
     updateGL();
 }
@@ -287,11 +294,21 @@ void MyGLWidget::keyPressEvent(QKeyEvent *event)
 
 void MyGLWidget::draw()
 {
+    if (!balleAttrapee)
+    {
 
-   leBras.draw();
-   laBalle.draw();
-   lArene.draw();
+        laBalle.draw();
+        leBras.draw2();
+    }
+
+
+    else
+    {
+        leBras.draw2();
+    }
+        lArene.draw();
 }
+
 
 int MyGLWidget::calculerAngle(int a, int b, int c)
 {

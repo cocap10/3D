@@ -13,7 +13,7 @@ public:
     ~Arene();
     void draw();
     void init();
-    void cible(int cotes, double rayon, GLint texture, double gamma);
+    void cible(int cotes, double rayon, GLint texture);
     void positionnerCible();
     double calcul_angle(double x, double y);
 

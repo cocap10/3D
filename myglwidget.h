@@ -62,6 +62,8 @@ private:
 
     QPoint lastPos;
 
+    bool balleAttrapee;
+
     Bras leBras;
     Arene lArene;
     Balle laBalle;

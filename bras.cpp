@@ -157,6 +157,8 @@ void Bras::draw()
                         glCallList(listDoigt);
                     glPopMatrix();
 
+
+
                 glPopMatrix();
             glPopMatrix();
         glPopMatrix();
@@ -164,6 +166,25 @@ void Bras::draw()
 
     glFlush();
 }
+
+void Bras::draw2(){
+    this->draw();
+    glPushMatrix();
+        glEnable(GL_TEXTURE_2D);
+        glBindTexture(GL_TEXTURE_2D, GLtexture[0]);
+        quadric=gluNewQuadric();
+        gluQuadricDrawStyle(quadric, GLU_FILL);
+        gluQuadricTexture(quadric,1);
+        glTranslatef(0,0,14);
+        glScalef(2,2,2);
+        gluSphere(quadric,0.5,10,10);
+        gluDeleteQuadric(quadric);
+        glDisable(GL_TEXTURE_2D);
+    glPopMatrix();
+
+}
+
+
 GLuint Bras::getListCylindre() const
 {
     return listCylindre;
