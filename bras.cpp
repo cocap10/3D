@@ -6,7 +6,7 @@ Bras::Bras()
     beta=0;
     teta=0;
     pi=0;
-    omega=0;
+    omega=45;
 
 
 
@@ -73,7 +73,7 @@ void Bras::init()
             glBindTexture(GL_TEXTURE_2D, GLtexture[1]);
             gluQuadricTexture(quadric,1);
             glTranslatef(0,0,1);
-            glScalef(2,2,6);
+            glScalef(1,1,3);
             glCallList(listCylindre2);
             glDisable(GL_TEXTURE_2D);
         glPopMatrix();
@@ -86,15 +86,15 @@ void Bras::init()
         glPushMatrix();
             //phalange 1
             glTranslatef(0,0,0.2);
-            glScalef(0.3,0.3,1.5);
+            glScalef(0.2,0.2,1);
             glCallList(listCylindre);
         glPopMatrix();
-        glTranslatef(0,0,2.2);
+        glTranslatef(0,0,1.5);
         glRotatef(-90,1,0,0);
         glPushMatrix();
             //phalange 2
-            glTranslatef(0,0,0.4);
-            glScalef(0.3,0.3,1.5);
+            glTranslatef(0,0,0.3);
+            glScalef(0.2,0.2,1);
             glCallList(listCylindre);
         glPopMatrix();
     glPopMatrix();
@@ -122,12 +122,12 @@ void Bras::draw()
             //debut-bras
             glTranslatef(0,0,1.5);
             glCallList(listDemiBras);
-            glTranslatef(0,0,8);
+            glTranslatef(0,0,5);
             glRotatef(teta,1,0,0);
             glPushMatrix();
                 //avant-bras
                 glCallList(listDemiBras);
-                glTranslatef(0,0,8);
+                glTranslatef(0,0,5);
                 glRotatef(pi,0,0,1);
                 glPushMatrix();
                     //main
@@ -144,13 +144,13 @@ void Bras::draw()
 
                     glPopMatrix();
                     glPushMatrix();
-                        glTranslatef(0,-0.7,0.7);
+                        glTranslatef(0,-0.5,0.5);
                         glRotatef(omega,1,0,0);
                         //doigt1
                         glCallList(listDoigt);
                     glPopMatrix();
                     glPushMatrix();
-                        glTranslatef(0,0.7,0.7);
+                        glTranslatef(0,0.5,0.5);
                         glRotated(omega,-1,0,0);
                         //doigt2
                         glRotatef(180,0,0,1);
